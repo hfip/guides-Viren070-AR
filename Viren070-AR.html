@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أدلة Viren070 الشاملة بالعربية — الاستضافة الذاتية، Stremio، والألعاب</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#1e1b4b',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    code, pre {
+      font-family: 'JetBrains Mono', monospace;
+      direction: ltr;
+      text-align: left;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.5);
+    }
+    .admonition {
+      border-right-width: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- Toast Notification -->
+  <div id="toastContainer" class="fixed bottom-5 left-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Top Navbar (Docusaurus-inspired) -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      
+      <!-- Right: Mobile Menu Button + Brand -->
+      <div class="flex items-center gap-3">
+        <button id="mobileMenuBtn" type="button" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="القائمة الجانبية">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <button id="brandHomeBtn" type="button" class="flex items-center gap-2.5 text-right group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+            V
+          </div>
+          <div>
+            <div class="font-bold text-base sm:text-lg leading-tight text-slate-900 dark:text-white flex items-center gap-2">
+              <span>أدلة Viren070</span>
+              <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">بالعربية</span>
+            </div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block">ترجمة وشرح كامل لجميع الطرق والأدلة</div>
+          </div>
+        </button>
+      </div>
+
+      <!-- Center: Category Pills (Desktop) -->
+      <nav class="hidden xl:flex items-center gap-1 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl border border-slate-200/70 dark:border-slate-700/60" aria-label="الأقسام الرئيسية">
+        <button type="button" data-cat-btn="home" class="cat-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all">🏠 الرئيسية</button>
+        <button type="button" data-cat-btn="selfhosting" class="cat-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all">🖥️ الاستضافة الذاتية</button>
+        <button type="button" data-cat-btn="stremio" class="cat-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all">🎬 البث و Stremio</button>
+        <button type="button" data-cat-btn="aniyomi" class="cat-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all">🎌 Aniyomi</button>
+        <button type="button" data-cat-btn="gaming" class="cat-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all">🎮 الألعاب (Plutonium)</button>
+        <button type="button" data-cat-btn="tools" class="cat-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all">🛠️ أدوات تفاعلية</button>
+      </nav>
+
+      <!-- Left: Search + Theme Toggle + Original Link -->
+      <div class="flex items-center gap-2">
+        <div class="relative w-40 sm:w-60">
+          <input id="globalSearchInput" type="text" placeholder="ابحث في الأدلة والأوامر..." class="w-full bg-slate-100 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 text-xs sm:text-sm rounded-xl pr-9 pl-3 py-2 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" />
+          <svg class="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+
+        <button id="themeToggleBtn" type="button" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors" title="تبديل المظهر الليلي/النهاري">
+          <span id="themeIconDark" class="hidden dark:inline">☀️</span>
+          <span id="themeIconLight" class="inline dark:hidden">🌙</span>
+        </button>
+
+        <a href="https://guides.viren070.me/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/70 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-colors">
+          <span>الموقع الأصلي</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Search Results Dropdown -->
+    <div id="searchResultsBox" class="hidden max-w-2xl mx-auto px-4 pb-3">
+      <div class="bg-white dark:bg-slate-900 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 p-3 max-h-80 overflow-y-auto custom-scrollbar">
+        <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 dark:border-slate-800">
+          <span id="searchCountText" class="text-xs font-bold text-indigo-600 dark:text-indigo-400">نتائج البحث</span>
+          <button id="closeSearchBtn" type="button" class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">إغلاق ✕</button>
+        </div>
+        <div id="searchResultsList" class="space-y-1.5"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <div class="max-w-7xl mx-auto w-full flex-1 flex relative">
+
+    <!-- Right Sidebar (Docusaurus Sidebar in RTL) -->
+    <aside id="sidebarContainer" class="fixed lg:sticky top-16 right-0 z-30 w-72 h-[calc(100vh-4rem)] bg-white dark:bg-slate-900 lg:bg-transparent lg:dark:bg-transparent border-l border-slate-200 dark:border-slate-800 overflow-y-auto custom-scrollbar p-4 transition-transform duration-300 translate-x-full lg:translate-x-0 shrink-0">
+      
+      <!-- Progress Mini Card -->
+      <div class="mb-4 p-3.5 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-transparent border border-indigo-500/20">
+        <div class="flex items-center justify-between text-xs font-bold mb-1.5">
+          <span class="text-indigo-600 dark:text-indigo-300">تقدمك في تطبيق الأدلة</span>
+          <span id="sidebarProgressPct" class="text-slate-700 dark:text-slate-200">0%</span>
+        </div>
+        <div class="w-full h-2 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+          <div id="sidebarProgressBar" class="h-full bg-gradient-to-l from-indigo-500 to-purple-500 transition-all duration-300" style="width: 0%"></div>
+        </div>
+        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5">يمكنك تحديد الخطوات المكتملة أثناء القراءة</p>
+      </div>
+
+      <!-- Navigation Tree -->
+      <div id="sidebarNavTree" class="space-y-4"></div>
+
+    </aside>
+
+    <!-- Mobile Backdrop -->
+    <div id="mobileBackdrop" class="fixed inset-0 bg-black/50 z-20 hidden lg:hidden"></div>
+
+    <!-- Center Article Area -->
+    <main class="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      
+      <!-- Breadcrumb + Original Source Link Bar -->
+      <div id="breadcrumbBar" class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-6 border-b border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
+        <div id="breadcrumbTrail" class="flex items-center gap-1.5 font-medium"></div>
+        <div class="flex items-center gap-3">
+          <a id="currentOriginalUrl" href="https://guides.viren070.me/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
+            <span>رابط الصفحة الأصلية (English)</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Dynamic Page Container -->
+      <article id="pageContent" class="space-y-6 max-w-4xl"></article>
+
+      <!-- Next / Prev Page Footer -->
+      <div id="paginationFooter" class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl"></div>
+
+    </main>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-700 dark:text-slate-200">أدلة Viren070 باللغة العربية</span>
+        <span>—</span>
+        <span>مرجع شامل ومترجم بالكامل من <a href="https://guides.viren070.me/" target="_blank" rel="noopener noreferrer" class="text-indigo-500 hover:underline">guides.viren070.me</a></span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="https://guides.viren070.me/selfhosting" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-500 transition-colors">دليل الاستضافة الذاتية الأصلي</a>
+        <a href="https://guides.viren070.me/stremio" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-500 transition-colors">دليل Stremio الأصلي</a>
+        <a href="https://github.com/Viren070/docker-compose-template" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-500 transition-colors">قالب Docker Compose على GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==========================================
+    // DATA: ALL PAGES & SECTIONS OF VIREN070 GUIDES IN ARABIC
+    // ==========================================
+    const PAGES = [
+      {
+        id: 'home',
+        category: 'home',
+        categoryLabel: 'الرئيسية',
+        title: 'مرحباً بك في أدلة Viren070 الشاملة (النسخة العربية)',
+        subtitle: 'ترجمة عربية كاملة ومفصلة لجميع أدلة الاستضافة الذاتية (Self-Hosting)، إعداد Stremio وإضافاته، Aniyomi، و Plutonium.',
+        originalUrl: 'https://guides.viren070.me/',
+        updatedAt: 'محدث وفق أحدث تغييرات 2026',
+        checklistItem: 'تصفح الأقسام الرئيسية واختيار المسار المناسب لك',
+        render: () => `
+          <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900 via-slate-900 to-purple-950 text-white p-6 sm:p-10 shadow-xl border border-indigo-500/30">
+            <div class="relative z-10 max-w-2xl space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs font-bold">
+                <span>✨ دليل تفاعلي شامل باللغة العربية</span>
+              </div>
+              <h1 class="text-2xl sm:text-4xl font-extrabold leading-tight">
+                كل ما تحتاجه للاستضافة الذاتية وبث المحتوى بأعلى جودة
+              </h1>
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                أهلاً بك في النسخة العربية الشاملة من موقع <strong>Viren070's Guides</strong>. يحتوي هذا الموقع على شروحات تفصيلية خطوة بخطوة للبرامج والخدمات التي يستخدمها Viren070 شخصياً، بدءاً من إعداد خادم سحابي مجاني مدى الحياة من <strong>Oracle Cloud</strong> وتشغيل حاويات <strong>Docker & Traefik</strong>، وصولاً إلى الدليل الكامل لبرنامج <strong>Stremio</strong> وإضافات <strong>Torrentio</strong> و <strong>AIOStreams</strong> وخدمات الديبريد.
+              </p>
+              <div class="flex flex-wrap gap-3 pt-2">
+                <button type="button" onclick="navigateTo('sh-overview')" class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-sm shadow-lg shadow-indigo-500/30 transition-all">
+                  🚀 ابدأ دليل الاستضافة الذاتية (Self Hosting)
+                </button>
+                <button type="button" onclick="navigateTo('st-overview')" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition-all">
+                  🎬 ابدأ دليل Stremio الشامل
+                </button>
+                <button type="button" onclick="navigateTo('interactive-tools')" class="px-5 py-2.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 font-bold text-sm border border-emerald-400/30 transition-all">
+                  🛠️ مولّد ملفات الإعداد التفاعلي
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Categories Grid -->
+          <div class="pt-4">
+            <h2 class="text-xl font-extrabold mb-4 flex items-center gap-2">
+              <span>📂 أقسام الموقع الكاملة</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              
+              <!-- Self Hosting Card -->
+              <div class="group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all shadow-sm">
+                <div class="flex items-start justify-between gap-3 mb-3">
+                  <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-2xl">🖥️</div>
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">3 أدلة مفصلة</span>
+                </div>
+                <h3 class="text-lg font-extrabold mb-2 group-hover:text-indigo-500 transition-colors">الاستضافة الذاتية (Self Hosting)</h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                  سلسلة متكاملة تشرح كيفية استضافة خدماتك وإضافات Stremio ذاتياً باستخدام Docker على خادم VPS مجاني بالكامل من Oracle مع Traefik كوكيل عكسي (Reverse Proxy) و Authelia للحماية من الصفر.
+                </p>
+                <div class="space-y-2 border-t border-slate-100 dark:border-slate-800 pt-3">
+                  <button type="button" onclick="navigateTo('sh-oracle')" class="w-full text-right text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center justify-between">
+                    <span>1. إعداد خادم Oracle VPS المجاني (تحديث يونيو 2026)</span>
+                    <span>←</span>
+                  </button>
+                  <button type="button" onclick="navigateTo('sh-docker')" class="w-full text-right text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center justify-between">
+                    <span>2. تثبيت Docker وشرح أساسيات compose.yaml</span>
+                    <span>←</span>
+                  </button>
+                  <button type="button" onclick="navigateTo('sh-template')" class="w-full text-right text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center justify-between">
+                    <span>3. استخدام قالب Docker Compose الجاهز (Traefik + Authelia)</span>
+                    <span>←</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Streaming / Stremio Card -->
+              <div class="group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-purple-500 dark:hover:border-purple-500 transition-all shadow-sm">
+                <div class="flex items-start justify-between gap-3 mb-3">
+                  <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-2xl">🎬</div>
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400">7 أقسام شاملة</span>
+                </div>
+                <h3 class="text-lg font-extrabold mb-2 group-hover:text-purple-500 transition-colors">البث المباشر و Stremio (Streaming)</h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                  الدليل الوحيد الذي ستحتاجه لإعداد Stremio لبث الأفلام والمسلسلات والأنمي بجودة 4K HDR بدون تقطيع عبر خدمات الديبريد (Real-Debrid, TorBox, Premiumize) وإضافات Torrentio و AIOStreams.
+                </p>
+                <div class="space-y-2 border-t border-slate-100 dark:border-slate-800 pt-3">
+                  <button type="button" onclick="navigateTo('st-setup')" class="w-full text-right text-xs font-bold text-purple-600 dark:text-purple-400 hover:underline flex items-center justify-between">
+                    <span>• دليل الإعداد الشامل لجميع الأجهزة وخدمات Debrid</span>
+                    <span>←</span>
+                  </button>
+                  <button type="button" onclick="navigateTo('st-addons')" class="w-full text-right text-xs font-bold text-purple-600 dark:text-purple-400 hover:underline flex items-center justify-between">
+                    <span>• ضبط Torrentio و AIOStreams و Google Drive</span>
+                    <span>←</span>
+                  </button>
+                  <button type="button" onclick="navigateTo('st-troubleshooting')" class="w-full text-right text-xs font-bold text-purple-600 dark:text-purple-400 hover:underline flex items-center justify-between">
+                    <span>• الأسئلة الشائعة (FAQ) وحلول جميع المشاكل</span>
+                    <span>←</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Aniyomi Card -->
+              <div class="group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-pink-500 dark:hover:border-pink-500 transition-all shadow-sm">
+                <div class="flex items-start justify-between gap-3 mb-3">
+                  <div class="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-600 dark:text-pink-400 flex items-center justify-center text-2xl">🎌</div>
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-pink-500/10 text-pink-600 dark:text-pink-400">أنمي ومانجا</span>
+                </div>
+                <h3 class="text-lg font-extrabold mb-2 group-hover:text-pink-500 transition-colors">تطبيق Aniyomi للأندرويد</h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                  دليل إعداد تطبيق Aniyomi على أجهزة أندرويد لمشاهدة الأنمي وقراءة المانجا مجاناً، مع شرح الإضافات (Extensions)، ربط TorBox، وأشهر النسخ المعدلة (Forks).
+                </p>
+                <button type="button" onclick="navigateTo('aniyomi-guide')" class="text-xs font-bold text-pink-600 dark:text-pink-400 hover:underline">
+                  استعرض دليل Aniyomi الكامل ←
+                </button>
+              </div>
+
+              <!-- Gaming / Plutonium Card -->
+              <div class="group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-amber-500 dark:hover:border-amber-500 transition-all shadow-sm">
+                <div class="flex items-start justify-between gap-3 mb-3">
+                  <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-2xl">🎮</div>
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400">الألعاب (Gaming)</span>
+                </div>
+                <h3 class="text-lg font-extrabold mb-2 group-hover:text-amber-500 transition-colors">تشغيل ألعاب Call of Duty عبر Plutonium</h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                  طريقة تحميل وإعداد مشغل Plutonium على نظام Windows للعب Black Ops 1 (T5)، Black Ops 2 (T6)، و World at War (T4) مجاناً مع خوادم مخصصة ودعم المودات.
+                </p>
+                <button type="button" onclick="navigateTo('gaming-plutonium')" class="text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline">
+                  استعرض دليل Plutonium الكامل ←
+                </button>
+              </div>
+
+            </div>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // SELF HOSTING OVERVIEW
+      // ==========================================
+      {
+        id: 'sh-overview',
+        category: 'selfhosting',
+        categoryLabel: 'الاستضافة الذاتية (Self Hosting)',
+        title: 'سلسلة أدلة الاستضافة الذاتية (Self Hosting)',
+        subtitle: 'كيف تستضيف خدماتك وإضافاتك بنفسك باستخدام Docker على خادم سحابي مجاني من Oracle مع Traefik و Authelia.',
+        originalUrl: 'https://guides.viren070.me/selfhosting',
+        updatedAt: '4 مارس 2025 / محدث 2026',
+        checklistItem: 'فهم مسار الاستضافة الذاتية المكون من 3 مراحل',
+        render: () => `
+          <div class="admonition bg-indigo-50 dark:bg-indigo-950/40 border-indigo-500 p-4 rounded-xl text-sm leading-relaxed">
+            <div class="font-bold text-indigo-700 dark:text-indigo-300 mb-1">💡 الهدف من هذه السلسلة</div>
+            توضح لك هذه السلسلة المكونة من 3 أجزاء كيفية استضافة الخدمات (مثل <strong>AIOStreams</strong>، <strong>StremThru</strong>، <strong>Comet</strong>، <strong>MediaFusion</strong>، <strong>NzbDAV</strong>، <strong>NZBHydra2</strong>، و <strong>Seanime</strong>) ذاتياً باستخدام <strong>Docker</strong> على خادم سحابي مجاني تماماً (Always Free VPS) من شركة <strong>Oracle</strong> باستخدام <strong>Traefik</strong> كوكيل عكسي (Reverse Proxy) لإصدار شهادات HTTPS تلقائياً و <strong>Authelia</strong> لحماية لوحات التحكم، وذلك من الصفر تماماً.
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+            <div onclick="navigateTo('sh-oracle')" class="cursor-pointer p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+              <div class="text-xs font-bold text-indigo-500 mb-1">الخطوة الأولى</div>
+              <h3 class="text-base font-extrabold mb-2">📄 1. خادم Oracle VPS المجاني</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                إنشاء حساب Oracle Cloud، تفعيل خطة Pay-As-You-Go لتجاوز مشكلة نفاد السعة مع البقاء ضمن الحد المجاني (2 OCPU و 12GB RAM و 200GB مساحة)، توليد مفاتيح SSH، وفتح المنافذ.
+              </p>
+            </div>
+
+            <div onclick="navigateTo('sh-docker')" class="cursor-pointer p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+              <div class="text-xs font-bold text-indigo-500 mb-1">الخطوة الثانية</div>
+              <h3 class="text-base font-extrabold mb-2">📄 2. تثبيت وشرح Docker</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                شرح مفهوم الحاويات (Containers)، الصور (Images)، المجلدات الدائمة (Volumes)، المنافذ (Ports)، وكيفية قراءة وتعديل ملفات <code>compose.yaml</code> وملفات <code>.env</code> وتثبيت Docker بأمر واحد.
+              </p>
+            </div>
+
+            <div onclick="navigateTo('sh-template')" class="cursor-pointer p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+              <div class="text-xs font-bold text-indigo-500 mb-1">الخطوة الثالثة</div>
+              <h3 class="text-base font-extrabold mb-2">📄 3. القالب الجاهز (Template)</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                استنساخ قالب <code>docker-compose-template</code> الخاص بـ Viren070 في المسار <code>/opt/docker</code>، ضبط النطاق (Cloudflare DDNS أو DuckDNS)، وتشغيل Traefik و Authelia وجميع الإضافات.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+            <h3 class="text-base font-extrabold">لماذا تستضيف إضافاتك ذاتياً (Self-Hosting) بدلاً من النسخ العامة؟</h3>
+            <ul class="list-disc list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2 leading-relaxed">
+              <li><strong>بدون قيود على الإضافات (مثل Torrentio):</strong> النسخ العامة مثل ElfHosted AIOStreams تمنع إضافة Torrentio مباشرة، بينما في استضافتك الخاصة يمكنك تشغيل Torrentio وجميع الإضافات بحرية كاملة.</li>
+              <li><strong>تجنب حدود الطلبات (No Rate Limits):</strong> الخوادم العامة يشاركك فيها مئات المستخدمين في نفس اللحظة، أما خادمك الخاص فهو مخصص لك ولعائلتك فقط.</li>
+              <li><strong>توحيد عنوان الـ IP (البروكسي المدمج):</strong> يمكنك تمرير البث عبر MediaFlow Proxy أو البروكسي المدمج في AIOStreams أو StremThru بحيث يظهر لخدمة الديبريد أو Usenet عنوان IP واحد فقط حتى لو كنت تشاهد من عدة أماكن.</li>
+              <li><strong>خصوصية وأمان أعلى:</strong> مفاتيح الـ API الخاصة بك تبقى محفوظة على خادمك الشخصي فقط.</li>
+            </ul>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // SELF HOSTING 1: ORACLE VPS
+      // ==========================================
+      {
+        id: 'sh-oracle',
+        category: 'selfhosting',
+        categoryLabel: 'الاستضافة الذاتية (Self Hosting)',
+        title: '1. إعداد خادم Oracle VPS المجاني بالكامل',
+        subtitle: 'دليل تفصيلي للحصول على خادم Ubuntu 24.04 بمواصفات 2 OCPU و 12GB RAM و 200GB مساحة ضمن الموارد المجانية دائماً (Always Free).',
+        originalUrl: 'https://guides.viren070.me/selfhosting/oracle',
+        updatedAt: '13 يونيو 2026',
+        checklistItem: 'إنشاء خادم Oracle VPS والاتصال به عبر SSH وفتح المنافذ',
+        render: () => `
+          <!-- June 2026 Important Notice -->
+          <div class="admonition bg-amber-50 dark:bg-amber-950/40 border-amber-500 p-4 rounded-xl text-xs sm:text-sm space-y-2">
+            <div class="font-extrabold text-amber-800 dark:text-amber-300 flex items-center gap-2">
+              <span>⚠️ تحديث هام (12 يونيو 2026): تقليص موارد Always Free لفئة A1</span>
+            </div>
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+              في 12 يونيو 2026، قامت شركة Oracle بتحديث صفحة الموارد المجانية الدائمة (Always Free). أصبح الحد المجاني الجديد لمعالجات Arm من نوع <code>VM.Standard.A1.Flex</code> هو <strong>2 OCPUs و 12GB RAM</strong> (بدلاً من 4 OCPUs و 24GB RAM سابقاً)، مع بقاء مساحة التخزين المجانية عند <strong>200GB</strong>. تم تحديث هذا الدليل بالكامل ليعكس الأرقام الجديدة حتى لا تتعرض لأي رسوم. إذا كان لديك خادم قديم بمواصفات 4 OCPU / 24GB، ستجد في نهاية هذه الصفحة خطوات تقليصه في 5 دقائق.
+            </p>
+          </div>
+
+          <div class="admonition bg-rose-50 dark:bg-rose-950/40 border-rose-500 p-4 rounded-xl text-xs sm:text-sm space-y-2">
+            <div class="font-extrabold text-rose-700 dark:text-rose-300">🚨 تنبيه مهم حول الفواتير والحد المجاني</div>
+            <ul class="list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
+              <li>للتسجيل في Oracle Cloud Free Tier تحتاج إلى بطاقة ائتمانية أو مدى/خصم صالحة (البطاقات الافتراضية أو مسبقة الدفع لا تُقبل).</li>
+              <li>طوال بقائك على الحساب المجاني (Free Tier) يستحيل سحب أي مبلغ منك، ولكن إذا رقّيت حسابك إلى <strong>Pay-As-You-Go (PAYG)</strong> لتجاوز مشكلة نفاد السعة، فسيتم محاسبتك فقط إذا تجاوزت حدود الباقة المجانية.</li>
+              <li>تأكد من عدم إنشاء أي خادم إضافي أو أقراص إضافية: الحد المجاني يشمل <strong>خادماً واحداً فقط (2 OCPU + 12GB RAM)</strong> وإجمالي مساحة إقلاع (Boot Volume) لا تتجاوز <strong>200GB</strong>، وحركة بيانات صادرة (Egress Bandwidth) تصل إلى <strong>10TB شهرياً</strong> مجاناً.</li>
+            </ul>
+          </div>
+
+          <!-- Step 1: Sign Up -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">الخطوة 1: التسجيل في Oracle Cloud وحل مشاكل التفعيل</h2>
+            <ol class="list-decimal list-inside text-xs sm:text-sm space-y-2 text-slate-700 dark:text-slate-300 leading-relaxed">
+              <li>توجه إلى <a href="https://www.oracle.com/cloud/free/" target="_blank" rel="noopener noreferrer" class="text-indigo-500 underline font-semibold">موقع Oracle Cloud الرسمي</a> واضغط على <strong>Start for free</strong>.</li>
+              <li>أدخل بياناتك الشخصية وعنوان الفوترة والبطاقة البنكية بدقة.</li>
+            </ol>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800/70 text-xs space-y-1.5">
+              <div class="font-bold text-slate-800 dark:text-slate-200">💡 نصائح ذهبية إذا واجهت رفضاً أثناء التسجيل في Oracle:</div>
+              <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-1">
+                <li>تأكد من مطابقة عنوان الفوترة (Billing Address) تماماً لما هو مسجل في كشف حسابك البنكي أو تطبيق البنك.</li>
+                <li>استخدم نافذة التصفح الخفي (InPrivate) في متصفح <strong>Microsoft Edge</strong>.</li>
+                <li>أوقف أي مانع إعلانات (AdBlocker) أو VPN أثناء عملية التسجيل.</li>
+                <li>جرب استخدام بريد إلكتروني مختلف أو بطاقة بنكية أخرى، أو تواصل مع دعم Oracle عبر المحادثة المباشرة أسفل يمين الصفحة.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 2: Create VM Instance -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">الخطوة 2: إنشاء الخادم الافتراضي (VM Instance)</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">بعد الدخول إلى لوحة تحكم Oracle Cloud، اضغط على <strong>Create a VM instance</strong> ضمن قسم Build، ثم اضبط الإعدادات التالية:</p>
+            
+            <div class="overflow-x-auto">
+              <table class="w-full text-right text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-b border-slate-200 dark:border-slate-700">
+                    <th class="p-3 font-bold">القسم</th>
+                    <th class="p-3 font-bold">الإعداد المطلوب</th>
+                    <th class="p-3 font-bold">ملاحظات هامة</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                  <tr>
+                    <td class="p-3 font-bold">Basic Information</td>
+                    <td class="p-3">اختر اسماً للخادم واترك Compartment كما هو</td>
+                    <td class="p-3 text-slate-500">مثلاً: <code>stremio-vps</code></td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">Image (نظام التشغيل)</td>
+                    <td class="p-3">اضغط <strong>Change Image</strong> واختر <strong>Ubuntu</strong> ثم <strong>Canonical Ubuntu 24.04</strong></td>
+                    <td class="p-3 text-slate-500">تأكد من اختيار النسخة القياسية 24.04</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">Shape (المعالج والرام)</td>
+                    <td class="p-3">اضغط <strong>Change Shape</strong> واختر <strong>Ampere</strong> ثم <code>VM.Standard.A1.Flex</code></td>
+                    <td class="p-3 text-emerald-600 dark:text-emerald-400 font-bold">اضبط OCPUs = 2 والذاكرة Memory = 12 GB</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">Security</td>
+                    <td class="p-3">اتركها على الإعدادات الافتراضية واضغط Next</td>
+                    <td class="p-3 text-slate-500">لا تحتاج لتعديل</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">Networking (VNIC)</td>
+                    <td class="p-3">اختر <strong>Create new virtual cloud network</strong> و <strong>Create new public subnet</strong></td>
+                    <td class="p-3 text-slate-500">تأكد من تفعيل تعيين عنوان IPv4 عام</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">Storage (التخزين)</td>
+                    <td class="p-3">فعّل خيار <strong>Specify a custom boot volume size and performance</strong></td>
+                    <td class="p-3 text-emerald-600 dark:text-emerald-400 font-bold">الحجم = 200 GB | الأداء (VPU) = 120</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Step 3: SSH Keys -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">الخطوة 3: توليد وإضافة مفاتيح SSH (في قسم Networking)</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              قبل الضغط على Next في صفحة الشبكة، تحتاج إلى توليد زوج مفاتيح SSH على جهازك الشخصي لربطه بالخادم:
+            </p>
+            <div class="space-y-3">
+              <div class="text-xs font-bold">1. افتح الطرفية (Terminal أو PowerShell) على جهازك ونفذ الأمر التالي لتوليد مفتاح <code>ed25519</code>:</div>
+              ${renderCodeBlock('ssh-keygen -t ed25519 -C "your_email@example.com"', 'bash')}
+              <div class="text-xs text-slate-500">اضغط Enter لحفظه في المسار الافتراضي <code>~/.ssh/id_ed25519</code>، ويمكنك وضع كلمة مرور (Passphrase) لحمايته. (إذا كان نظامك قديماً ولا يدعم ed25519 استخدم: <code>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code>).</div>
+              
+              <div class="text-xs font-bold pt-2">2. على نظام Windows، افتح نافذة PowerShell كمسؤول (Administrator) لتفعيل خدمة <code>ssh-agent</code> تلقائياً:</div>
+              ${renderCodeBlock('Get-Service -Name ssh-agent | Set-Service -StartupType Automatic\nStart-Service ssh-agent', 'powershell')}
+
+              <div class="text-xs font-bold pt-2">3. في نافذة الطرفية العادية (غير المسؤول)، أضف مفتاحك الخاص إلى الـ Agent:</div>
+              ${renderCodeBlock('ssh-add C:/Users/your_username/.ssh/id_ed25519', 'powershell')}
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                الآن ستجد ملفين في مجلد <code>~/.ssh</code> هما <code>id_ed25519</code> و <code>id_ed25519.pub</code>. في صفحة Oracle Cloud تحت قسم <strong>Add SSH keys</strong>، اختر <strong>Upload public key files (.pub)</strong> وارفع ملف <strong><code>id_ed25519.pub</code></strong> ثم أكمل خطوة التخزين (200GB و 120 VPU) واضغط <strong>Create</strong>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4: Out of Capacity & PAYG + $1 Budget Alert -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">الخطوة 4: حل مشكلة Out of Capacity والترقية الآمنة لـ PAYG مع تنبيه 1$</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              عند الضغط على Create قد تظهر لك رسالة خطأ <code>Out of capacity</code> بسبب الضغط الكبير على الحسابات المجانية. الحل الأضمن هو ترقية حسابك إلى <strong>Pay-As-You-Go (PAYG)</strong> (حيث لن تدفع أي شيء طالما التزمت بحدود 2 OCPU و 12GB RAM و 200GB):
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <h4 class="font-bold text-sm text-indigo-600 dark:text-indigo-400">أولاً: الترقية إلى Pay-As-You-Go</h4>
+                <ol class="list-decimal list-inside text-xs space-y-1.5 text-slate-600 dark:text-slate-300">
+                  <li>افتح القائمة الجانبية (أعلى اليسار) وانتقل إلى <strong>Billing and Cost Management</strong>.</li>
+                  <li>تحت قسم Billing اضغط <strong>Upgrade and Manage Payment</strong>.</li>
+                  <li>اضغط <strong>Upgrade to Pay-As-You-Go</strong> واتبع التعليمات.</li>
+                  <li>سيتم عمل تفويض مؤقت بمبلغ 100$ على بطاقتك للتأكد من صلاحيتها ويعود تلقائياً خلال ساعات أو أيام قليلة. تستغرق الترقية حتى 24 ساعة.</li>
+                </ol>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <h4 class="font-bold text-sm text-emerald-600 dark:text-emerald-400">ثانياً: إعداد تنبيه ميزانية بقيمة 1$ (Budget Alert)</h4>
+                <ol class="list-decimal list-inside text-xs space-y-1.5 text-slate-600 dark:text-slate-300">
+                  <li>من <strong>Billing and Cost Management</strong> اختر <strong>Budgets</strong> ثم <strong>Create Budget</strong>.</li>
+                  <li>الاسم: <code>dont_charge_me</code> | المبلغ (Budget Amount): <code>1</code>.</li>
+                  <li>المقياس (Threshold Metric): <code>Forecast Spend</code> | النوع: <code>Percentage of Budget</code> | النسبة: <code>1%</code>.</li>
+                  <li>أضف بريدك الإلكتروني لتصلك رسالة فوراً لو توقعت Oracle تجاوز الحد المجاني، وتفقد قسم <strong>Cost Analysis</strong> مع تفعيل <strong>Show Forecast</strong> للتأكد من أن التكلفة المتوقعة <code>$0</code>.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5: Connecting via SSH, Resizing, Opening Ports & SCP -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">الخطوة 5: الاتصال بالخادم، فتح المنافذ، ونقل الملفات</h2>
+            
+            <div class="space-y-3">
+              <h3 class="text-sm font-bold">1. الاتصال بالخادم عبر SSH:</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300">انسخ عنوان الـ <strong>Public IP address</strong> من صفحة تفاصيل الخادم، ونفذ الأمر التالي في الطرفية (واكتب <code>yes</code> عند السؤال الأول):</p>
+              ${renderCodeBlock('ssh ubuntu@your_ip', 'bash')}
+
+              <h3 class="text-sm font-bold pt-2">2. فتح المنافذ (Opening Ports) في جدار حماية Oracle Cloud:</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300">افتراضياً جميع المنافذ مغلقة في Oracle VPS. لفتح المنافذ (مثل <code>80</code> و <code>443</code> لـ Traefik):</p>
+              <ol class="list-decimal list-inside text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                <li>ادخل لصفحة الخادم واضغط على تبويب <strong>Networking</strong> ثم اضغط على الرابط بجانب <strong>Subnet</strong>.</li>
+                <li>انتقل لتبويب <strong>Security</strong> واضغط على <strong>Default Security List for vcn-...</strong>.</li>
+                <li>انتقل إلى <strong>Security rules</strong> واضغط <strong>Add Ingress Rules</strong> واملأ البيانات التالية:</li>
+              </ol>
+              ${renderCodeBlock('Source Type: CIDR\nSource CIDR: 0.0.0.0/0\nIP Protocol: TCP\nSource Port Range: All\nDestination Port Range: 80, 443 (أو المنفذ المطلوب)\nDescription: Allow HTTP and HTTPS traffic', 'yaml')}
+
+              <h3 class="text-sm font-bold pt-2">3. نقل الملفات من وإلى الخادم عبر أداة SCP:</h3>
+              ${renderCodeBlock('# نقل ملف من جهازك الشخصي إلى مجلد المستخدم في الخادم:\nscp file.txt ubuntu@your_ip:~/file.txt\n\n# نقل ملف من الخادم إلى جهازك الشخصي:\nscp ubuntu@your_ip:/path/to/file.txt /path/to/destination', 'bash')}
+
+              <h3 class="text-sm font-bold pt-2">4. تقليص خادم قديم من 4 OCPU / 24GB إلى الحد الجديد 2 OCPU / 12GB:</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                إذا كنت قد أنشأت خادمك سابقاً بـ 4 OCPU و 24GB RAM، ادخل إلى <strong>Compute &rarr; Instances</strong>، افتح خادمك واضغط <strong>Actions &rarr; More actions &rarr; Edit</strong>، ثم عند جدول <strong>Shape</strong> اضغط السهم بجانب <code>VM.Standard.A1.Flex</code> وغيّر OCPUs إلى <code>2</code> والذاكرة إلى <code>12</code>، ثم اضغط <strong>Save changes</strong> ووافق على إعادة التشغيل (Reboot instance).
+              </p>
+            </div>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // SELF HOSTING 2: DOCKER
+      // ==========================================
+      {
+        id: 'sh-docker',
+        category: 'selfhosting',
+        categoryLabel: 'الاستضافة الذاتية (Self Hosting)',
+        title: '2. تثبيت Docker وشرح أساسيات compose.yaml بالتفصيل',
+        subtitle: 'افهم كيف تعمل الحاويات (Containers)، المجلدات (Volumes)، المنافذ (Ports)، ومتغيرات البيئة قبل تشغيل القالب.',
+        originalUrl: 'https://guides.viren070.me/selfhosting/docker',
+        updatedAt: '8 يوليو 2025',
+        checklistItem: 'تثبيت Docker على الخادم والتحقق من إصداره وفهم ملف compose.yaml',
+        render: () => `
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">ما هو Docker ولماذا نشرحه بالتفصيل؟</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              يؤكد Viren070 على أهمية فهم آلية عمل Docker بدلاً من نسخ القوالب بشكل أعمى؛ فهذا الفهم سيساعدك على حل أي مشكلة وتخصيص الخدمات بنفسك. <strong>Docker</strong> هو منصة لتشغيل التطبيقات داخل بيئات معزولة تُسمى <strong>الحاويات (Containers)</strong>. كل حاوية تمتلك نظام ملفات وشبكة خاصة بها بحيث يمكنك تشغيل عشرات التطبيقات على نفس الخادم دون أي تعارض بينها، بالاعتماد على قوالب جاهزة تُسمى <strong>الصور (Images)</strong> يتم جلبها من Docker Hub أو GitHub Container Registry (<code>ghcr.io</code>).
+            </p>
+          </div>
+
+          <!-- Annotated Compose Example -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">تشريح ملف <code>compose.yaml</code> القياسي</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">نستخدم أداة <strong>Docker Compose</strong> لتعريف وتشغيل عدة خدمات معاً عبر ملف <code>compose.yaml</code>. إليك المثال الشامل الذي يشرحه الدليل:</p>
+            ${renderCodeBlock(`services:
+  myservice1:
+    image: image1:tag1
+    container_name: mycontainer1
+    ports:
+      - "8080:80"
+    environment:
+      - ENV_VAR1=value1
+      - ENV_VAR2=\${SERVICE1_VAR2:-default_value} # قيمة اختيارية تأخذ default_value إذا لم يتم تعيينها
+      - ENV_VAR3=\${SERVICE1_VAR3?Error message}  # قيمة إجبارية تُظهر رسالة خطأ إذا لم يتم تعيينها
+    env_file:
+      - .custom.env
+    volumes:
+      - ./tmp:/tmp
+      - image-data:/data
+    labels:
+      - "mylabel1=myvalue1"
+    restart: unless-stopped
+
+  myservice2:
+    image: image2:tag2
+    container_name: mycontainer2
+    restart: unless-stopped
+    expose:
+      - 8080
+    environment:
+      ENV_VAR2: value2
+    volumes:
+      - ./tmp:/tmp
+      - /opt/image2:/data
+    labels:
+      mylabel2: myvalue2
+
+volumes:
+  image-data:`, 'yaml')}
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-1">
+                <div class="font-bold text-indigo-600 dark:text-indigo-400">1. <code>image</code> &amp; <code>build</code></div>
+                <p class="text-slate-600 dark:text-slate-300">يحدد الصورة المستخدمة مثل <code>viren070/aiostreams:latest</code> أو <code>ghcr.io/viren070/aiostreams:latest</code>. وإذا لم تتوفر صورة جاهزة، يمكن بناؤها مباشرة من مستودع GitHub يحتوي على <code>Dockerfile</code> عبر مفتاح <code>build.context</code>.</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-1">
+                <div class="font-bold text-indigo-600 dark:text-indigo-400">2. <code>restart: unless-stopped</code></div>
+                <p class="text-slate-600 dark:text-slate-300">سياسة إعادة التشغيل: تضمن إعادة تشغيل الحاوية تلقائياً إذا تعطلت أو عند إعادة تشغيل الخادم، طالما لم تقم بإيقافها يدوياً.</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-1">
+                <div class="font-bold text-indigo-600 dark:text-indigo-400">3. <code>volumes</code> (حفظ البيانات)</div>
+                <p class="text-slate-600 dark:text-slate-300">بدون الـ Volumes ستضيع بيانات الحاوية عند إيقافها أو تحديثها! الصيغة هي <code>host-path:container-path</code>، وتنقسم إلى <strong>Named Volumes</strong> (تُحفظ في <code>/var/lib/docker/volumes</code>) و <strong>Bind Mounts</strong> (تحدد مسار المجلد مباشرة مثل <code>./tmp:/tmp</code>).</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-1">
+                <div class="font-bold text-indigo-600 dark:text-indigo-400">4. <code>ports</code> مقابل <code>expose</code></div>
+                <p class="text-slate-600 dark:text-slate-300">المفتاح <code>ports: "8080:80"</code> يربط منفذ الخادم 8080 بمنفذ الحاوية 80 ليصبح متاحاً خارجياً. أما <code>expose</code> فهو توثيقي فقط للتواصل الداخلي عبر الوكيل العكسي (Traefik) دون فتح المنفذ للعالم الخارجي.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Installing Docker Steps -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">خطوات تثبيت Docker على خادمك (VPS)</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">لتثبيت Docker و Docker Compose رسمياً على خادم Ubuntu الخاص بك، نفّذ الأوامر التالية بالترتيب:</p>
+            
+            <div class="space-y-3">
+              <div class="text-xs font-bold">1. تحميل سكربت التثبيت الرسمي من Docker:</div>
+              ${renderCodeBlock('curl -fsSL https://get.docker.com -o install-docker.sh', 'bash')}
+
+              <div class="text-xs font-bold">2. (اختياري) معاينة محتوى السكربت أو تجربة تشغيله الوهمي (Dry Run):</div>
+              ${renderCodeBlock('cat install-docker.sh\nsh install-docker.sh --dry-run', 'bash')}
+
+              <div class="text-xs font-bold">3. تشغيل السكربت بصلاحيات الجذر (sudo) لإتمام التثبيت:</div>
+              ${renderCodeBlock('sudo sh install-docker.sh', 'bash')}
+
+              <div class="text-xs font-bold">4. التحقق من نجاح التثبيت ومعرفة الإصدار:</div>
+              ${renderCodeBlock('docker --version', 'bash')}
+            </div>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // SELF HOSTING 3: DOCKER COMPOSE TEMPLATE
+      // ==========================================
+      {
+        id: 'sh-template',
+        category: 'selfhosting',
+        categoryLabel: 'الاستضافة الذاتية (Self Hosting)',
+        title: '3. استخدام قالب Docker Compose الجاهز (Traefik + Authelia)',
+        subtitle: 'تثبيت وتشغيل قالب Viren070 المتكامل لاستضافة AIOStreams و StremThru و MediaFusion و NzbDAV و Seanime بشهادات HTTPS تلقائية.',
+        originalUrl: 'https://github.com/Viren070/docker-compose-template',
+        updatedAt: 'محدث 2026',
+        checklistItem: 'استنساخ قالب Viren070 وضبط ملف .env وتشغيل Traefik والخدمات',
+        render: () => `
+          <div class="admonition bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 p-4 rounded-xl text-xs sm:text-sm space-y-1.5">
+            <div class="font-extrabold text-emerald-800 dark:text-emerald-300">🎯 ماذا يقدم لك هذا القالب؟</div>
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+              قالب <code>docker-compose-template</code> (المعروف أيضاً بـ <code>docker-compose-vps-template</code>) يجهز لك بنية متكاملة تعتمد على <strong>Traefik</strong> كوكيل عكسي يتولى إصدار شهادات SSL/HTTPS تلقائياً، و <strong>Authelia</strong> كبوابة مصادقة وحماية موحدة، مع ملفات جاهزة لتشغيل أشهر إضافات Stremio وتطبيقات الميديا عبر نظام <strong>Profiles</strong>.
+            </p>
+          </div>
+
+          <!-- Prerequisites -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">المتطلبات الأساسية قبل البدء</h2>
+            <ul class="list-disc list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2 leading-relaxed">
+              <li><strong>خادم VPS مثبت عليه Docker:</strong> مع فتح المنفذين <strong><code>80</code></strong> و <strong><code>443</code></strong> في إعدادات الشبكة (Ingress Rules).</li>
+              <li><strong>نطاق خاص (Domain Name):</strong> يشير بسجلات DNS (من نوع A Record) إلى عنوان الـ IP العام للخادم لكل نطاق فرعي (Subdomain) ترغب في استخدامه:
+                <ul class="list-circle list-inside mr-5 mt-1 space-y-1 text-slate-500 dark:text-slate-400">
+                  <li>يمكنك الحصول على نطاق مجاني من <a href="https://www.duckdns.org/" target="_blank" rel="noopener noreferrer" class="text-indigo-500 underline">DuckDNS</a> أو <a href="https://freedns.afraid.org/" target="_blank" rel="noopener noreferrer" class="text-indigo-500 underline">Afraid.org</a>.</li>
+                  <li><strong>الأفضلية لـ Cloudflare:</strong> يُفضل ربط نطاقك بخدمة Cloudflare لأن القالب يتضمن خدمة <strong>Cloudflare DDNS</strong> التي تقوم بإنشاء وتحديث سجلات الـ DNS لجميع خدماتك تلقائياً (وهي ميزة غير متاحة مع DuckDNS أو Afraid.org).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Step-by-Step Deployment -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">خطوات التثبيت والتشغيل التفصيلية</h2>
+
+            <div class="space-y-3">
+              <div class="text-xs font-bold">1. الانتقال إلى المجلد <code>/opt</code> واستنساخ مستودع القالب وتعديل الصلاحيات:</div>
+              ${renderCodeBlock(`cd /opt
+sudo git clone https://github.com/Viren070/docker-compose-vps-template.git docker
+sudo chown $(id -u):$(id -g) -R /opt/docker
+cd /opt/docker
+ls -a`, 'bash')}
+              <p class="text-xs text-slate-500">عند تنفيذ <code>ls -a</code> ستظهر لك المجلدات والملفات الأساسية: <code>apps</code>، <code>data</code>، <code>compose.yaml</code>، و <code>.env</code>.</p>
+
+              <div class="text-xs font-bold pt-2">2. تعديل ملف متغيرات البيئة الرئيسي <code>.env</code>:</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300">يمكنك تحرير الملف باستخدام محرر <code>nano</code> مباشرة، أو استخدام برنامج <strong>XPipe</strong> أو <strong>VS Code (إضافة Remote - SSH)</strong> لتسهيل تعديل الملفات:</p>
+              ${renderCodeBlock('nano .env', 'bash')}
+              <p class="text-xs text-slate-600 dark:text-slate-300">داخل ملف <code>.env</code>، املأ القيم الأساسية (النطاق، بريدك الإلكتروني لشهادات Let's Encrypt، مفاتيح Authelia، ومفتاح Cloudflare API إذا كنت تستخدم Cloudflare DDNS).</p>
+
+              <div class="text-xs font-bold pt-2">3. تشغيل الخدمات الأساسية أولاً (Traefik + Authelia) والتحقق من السجلات:</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300">يوصي Viren070 بشدة بتشغيل البروفايل <code>required</code> أولاً للتأكد من أن Traefik و Authelia يعملان بشكل سليم قبل تشغيل باقي الإضافات:</p>
+              ${renderCodeBlock(`docker compose --profile required up -d
+docker compose --profile required logs -f`, 'bash')}
+
+              <div class="text-xs font-bold pt-2">4. تفعيل وتشغيل باقي التطبيقات عبر <code>COMPOSE_PROFILES</code>:</div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                بعد التأكد من عمل Traefik و Authelia، أضف أسماء البروفايلات التي تريدها إلى متغير <code>COMPOSE_PROFILES</code> في ملف <code>.env</code> (أو استخدم البروفايل <code>all</code>)، وتأكد من تعبئة أي ملفات <code>.env</code> فرعية داخل مجلدات التطبيقات في <code>/opt/docker/apps</code>، ثم شغّل الأوامر:
+              </p>
+              ${renderCodeBlock(`# تشغيل جميع الخدمات المحددة في متغير COMPOSE_PROFILES داخل ملف .env:
+docker compose up -d
+
+# أو تشغيل بروفايلات محددة مع إعادة بناء الحاويات:
+docker compose --profile required --profile aiostreams up -d --force-recreate
+
+# أمثلة لإدارة خدمة معينة (مثل seanime):
+docker compose --profile seanime restart
+docker compose --profile seanime logs -f`, 'bash')}
+            </div>
+
+            <div class="mt-4 p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex flex-wrap items-center justify-between gap-3">
+              <div class="text-xs sm:text-sm font-bold text-indigo-700 dark:text-indigo-300">
+                🛠️ هل تريد توليد ملف <code>.env</code> وأوامر التشغيل الخاصة بك تلقائياً؟
+              </div>
+              <button type="button" onclick="navigateTo('interactive-tools')" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all">
+                افتح مولّد الإعدادات التفاعلي ←
+              </button>
+            </div>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // STREMIO 1: INTRO & TECHNICAL DETAILS
+      // ==========================================
+      {
+        id: 'st-overview',
+        category: 'stremio',
+        categoryLabel: 'البث و Stremio',
+        title: 'مقدمة عن Stremio والتفاصيل التقنية الكاملة',
+        subtitle: 'كيف يعمل Stremio، الفرق بين إضافات HTTP وإضافات التورنت وخدمات الديبريد (Debrid)، وكيف تتفوق على مواقع الأفلام.',
+        originalUrl: 'https://guides.viren070.me/stremio/technical-details',
+        updatedAt: '18 أغسطس 2025',
+        checklistItem: 'فهم آلية عمل Stremio والفرق بين Torrent و HTTP و Debrid',
+        render: () => `
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-purple-600 dark:text-purple-400">ما هو Stremio ولماذا يتفوق على مواقع المشاهدة التقليدية؟</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              تطبيق <strong>Stremio</strong> في جوهره هو مشغل وسائط مجاني ومنظم محتوى لا يستضيف أي ملفات بنفسه (لتجنب أي مشاكل قانونية)، ولكنه عند دمجه مع الإضافات المناسبة (Addons) وخدمة ديبريد (Debrid Service) يتحول إلى أفضل منصة بث عند الطلب على الإطلاق:
+            </p>
+            <ul class="list-disc list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
+              <li><strong>جودة حقيقية غير مضغوطة:</strong> مواقع الأفلام غالباً لا تدعم 4K الحقيقي، وحتى جودة 1080p فيها تكون ذات معدل بت (Bitrate) منخفض جداً مقارنة بملفات Blu-Ray REMUX و 4K HDR/Dolby Vision المتوفرة في Stremio.</li>
+              <li><strong>بدون تقطيع أو إعلانات:</strong> مع خدمة Debrid، أنت تبث مباشرة من خوادم فائقة السرعة (تصل إلى 1Gbps+) عبر بروتوكول HTTPS بدون أي إعلانات منبثقة.</li>
+              <li><strong>يعمل على جميع أجهزتك بمزامنة سحابية:</strong> بمجرد إعداد حسابك مرة واحدة على الكمبيوتر أو الجوال، تنتقل جميع إضافاتك وسجل مشاهدتك تلقائياً إلى التلفزيون الذكي وأي جهاز آخر.</li>
+            </ul>
+          </div>
+
+          <!-- Addon Types -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-purple-600 dark:text-purple-400">كيف تعمل إضافات Stremio (Addons)؟</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">إضافات Stremio ليست برامج تُثبّت محلياً على جهازك، بل هي خدمات ويب بسيطة تستجيب لطلبات التطبيق وتوفر 4 أنواع من الموارد:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-xs">
+                <div class="font-bold text-purple-600 dark:text-purple-400 mb-1">1. مصادر الفيديو (Streams)</div>
+                <p class="text-slate-600 dark:text-slate-300">روابط تشغيل الفيلم أو الحلقة (سواء عبر التورنت أو الديبريد أو HTTP).</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-xs">
+                <div class="font-bold text-purple-600 dark:text-purple-400 mb-1">2. القوائم (Catalogues)</div>
+                <p class="text-slate-600 dark:text-slate-300">القوائم التي تملأ الشاشة الرئيسية (مثل قوائم Netflix أو Trending).</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-xs">
+                <div class="font-bold text-purple-600 dark:text-purple-400 mb-1">3. الترجمات (Subtitles)</div>
+                <p class="text-slate-600 dark:text-slate-300">جلب ملفات الترجمة المتوافقة تلقائياً مع العمل المعروض.</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-xs">
+                <div class="font-bold text-purple-600 dark:text-purple-400 mb-1">4. البيانات الوصفية (Metadata)</div>
+                <p class="text-slate-600 dark:text-slate-300">اسم العمل، القصة، الممثلين، والملصقات. (Cinemeta تستخدم معرف <code>tt</code> من IMDb، بينما TMDB يستخدم <code>tmdb</code>، و <strong>Anime Kitsu</strong> يستخدم <code>kitsu</code> الأفضل للأنمي).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comparison: HTTP vs Torrent vs Debrid -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-purple-600 dark:text-purple-400">مقارنة تقنية: إضافات HTTP مقابل التورنت العادي مقابل التورنت مع Debrid</h2>
+            <div class="overflow-x-auto">
+              <table class="w-full text-right text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+                    <th class="p-3 font-bold">المعيار</th>
+                    <th class="p-3 font-bold">إضافات HTTP</th>
+                    <th class="p-3 font-bold">إضافات التورنت (P2P بدون Debrid)</th>
+                    <th class="p-3 font-bold text-emerald-600 dark:text-emerald-400">التورنت + خدمة Debrid (الموصى به)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                  <tr>
+                    <td class="p-3 font-bold">الجودة وتنوع المصادر</td>
+                    <td class="p-3">منخفضة لتقليل تكلفة الخوادم المركزية</td>
+                    <td class="p-3">عالية جداً (من 480p حتى 4K Blu-Ray REMUX)</td>
+                    <td class="p-3 font-semibold text-emerald-600 dark:text-emerald-400">أعلى جودة ممكنة (4K DV/HDR/Atmos)</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">الاعتماد على السيدرز (Seeders)</td>
+                    <td class="p-3">لا يعتمد على السيدرز ولكن الخادم قد يزدحم أو يتعطل</td>
+                    <td class="p-3">يعتمد كلياً على عدد وسرعة السيدرز (القديم يقطع)</td>
+                    <td class="p-3 font-semibold text-emerald-600 dark:text-emerald-400">لا يعتمد على السيدرز طالما الملف مخزن مسبقاً (Cached)</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">الأمان والحاجة لـ VPN</td>
+                    <td class="p-3">آمن (لا يحتاج VPN)</td>
+                    <td class="p-3">يكشف عنوان IP الخاص بك في السرب (يحتاج VPN في الدول المتشددة)</td>
+                    <td class="p-3 font-semibold text-emerald-600 dark:text-emerald-400">بث مشفر عبر HTTPS — لا يحتاج إلى VPN نهائياً</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // STREMIO 2: SETUP (PLATFORMS, SERVER, DEBRID)
+      // ==========================================
+      {
+        id: 'st-setup',
+        category: 'stremio',
+        categoryLabel: 'البث و Stremio',
+        title: 'دليل إعداد Stremio الشامل (الأجهزة، الخادم، وخدمات Debrid)',
+        subtitle: 'تثبيت Stremio على جميع الأنظمة والشاشات، تشغيل Stremio Server، ومقارنة واختيار أفضل خدمة Debrid.',
+        originalUrl: 'https://guides.viren070.me/stremio/setup',
+        updatedAt: '31 أغسطس 2026',
+        checklistItem: 'إنشاء حساب Stremio وتثبيت التطبيق وربط خدمة Debrid',
+        render: () => `
+          <div class="admonition bg-purple-50 dark:bg-purple-950/40 border-purple-500 p-4 rounded-xl text-xs sm:text-sm">
+            <strong>💡 نصيحة البداية:</strong> يُنصح بإجراء الإعداد الأولي على جهاز الكمبيوتر أو اللابتوب (أو الجوال). بمجرد الانتهاء، سجل دخولك بنفس الحساب على التلفزيون أو أي جهاز آخر وستتم مزامنة كل شيء تلقائياً!
+          </div>
+
+          <!-- Platform Installation Tabs -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-purple-600 dark:text-purple-400">أولاً: تحميل وتثبيت Stremio حسب جهازك</h2>
+            <div class="flex flex-wrap gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+              <button type="button" onclick="switchPlatformTab('plat-tv')" id="btn-plat-tv" class="plat-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-purple-600 text-white">📺 الشاشات وأجهزة التلفاز (TV / Fire Stick)</button>
+              <button type="button" onclick="switchPlatformTab('plat-mobile')" id="btn-plat-mobile" class="plat-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">📱 الجوال (Android / iPhone & iPad)</button>
+              <button type="button" onclick="switchPlatformTab('plat-desktop')" id="btn-plat-desktop" class="plat-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">💻 الكمبيوتر (Windows / Mac / Linux)</button>
+              <button type="button" onclick="switchPlatformTab('plat-vr')" id="btn-plat-vr" class="plat-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">🥽 النظارات والأجهزة الأخرى (VR / Deck / Pi)</button>
+            </div>
+
+            <!-- TV Tab -->
+            <div id="plat-tv" class="plat-tab-pane space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <h4 class="font-extrabold text-slate-900 dark:text-white">🔥 أجهزة Amazon Fire TV Stick (التثبيت الجانبي Sideload خطوة بخطوة):</h4>
+                <ol class="list-decimal list-inside space-y-1">
+                  <li>من الشاشة الرئيسية، ابحث عن تطبيق <strong>Downloader</strong> وحمّله.</li>
+                  <li>اذهب إلى <strong>Settings &rarr; My Fire TV &rarr; About</strong> واضغط على اسم جهازك (Fire TV Stick) <strong>7 مرات متتالية بسرعة</strong> حتى تظهر رسالة <code>No need, you are already a developer</code>.</li>
+                  <li>ارجع للخلف وادخل إلى <strong>Developer Options</strong> وفعّل خيار <strong>Install unknown apps</strong> لتطبيق <strong>Downloader</strong>.</li>
+                  <li>افتح تطبيق Downloader، وفعّل <strong>JavaScript</strong> من إعداداته، ثم اكتب في المتصفح: <code>https://stremio.com/downloads</code>.</li>
+                  <li>انزل إلى قسم <strong>Android TV</strong> وحمّل نسخة <strong>Stremio ARM APK</strong> وثبّتها، ثم احذف ملف الـ APK بعد التثبيت لتوفير المساحة.</li>
+                </ol>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                  <div class="font-bold text-slate-900 dark:text-white mb-1">📺 Android TV / Google TV / Sony:</div>
+                  ثبّته مباشرة من متجر Google Play، وإذا لم يكن متاحاً في منطقتك حمّل نسخة <strong>ARM APK</strong> عبر تطبيق Downloader أو Send Files to TV.
+                </div>
+                <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                  <div class="font-bold text-slate-900 dark:text-white mb-1">📺 شاشات Samsung و LG و Philips و Hisense:</div>
+                  متوفر رسمياً في متجر شاشات <strong>Samsung (موديلات 2019+)</strong> و <strong>LG WebOS (موديلات 2020+ في قسم الترفيه)</strong> وشاشات <strong>Philips (Android TV &amp; Titan OS)</strong> و <strong>Hisense</strong>.
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile Tab -->
+            <div id="plat-mobile" class="plat-tab-pane hidden space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <h4 class="font-extrabold text-slate-900 dark:text-white">🍎 أجهزة iPhone و iPad (عبر Stremio Web + مشغل خارجي):</h4>
+                <p>نسخة المتجر محدودة ولا تدعم التورنت بسبب قيود Apple. الطريقة الأفضل للآيفون والآيباد مع خدمة Debrid هي:</p>
+                <ol class="list-decimal list-inside space-y-1">
+                  <li>افتح متصفح <strong>Safari</strong> وتوجه إلى <a href="https://web.stremio.com/" target="_blank" rel="noopener noreferrer" class="text-purple-500 underline">web.stremio.com</a>.</li>
+                  <li>اضغط زر المشاركة (المربع الذي يخرج منه سهم) واختر <strong>إضافة إلى الصفحة الرئيسية (Add to Home Screen)</strong>.</li>
+                  <li>حمّل تطبيق مشغل خارجي من App Store مثل <strong>Outplayer</strong> أو <strong>VLC</strong>.</li>
+                  <li>افتح تطبيق Stremio Web من شاشتك الرئيسية، تجاهل تحذير Streaming Server، ثم ادخل إلى <strong>Settings &rarr; Player &rarr; Advanced &rarr; Play in external player</strong> واختر <strong>Outplayer</strong> أو <strong>VLC</strong>.</li>
+                </ol>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1">
+                <h4 class="font-extrabold text-slate-900 dark:text-white">🤖 أجهزة Android:</h4>
+                <p>حمّله من متجر Google Play، أو حمّل ملف <strong>ARM64 (arm64-v8a) APK</strong> مباشرة من صفحة التحميل الرسمية في حال عدم توفره في متجر بلدك.</p>
+              </div>
+            </div>
+
+            <!-- Desktop Tab -->
+            <div id="plat-desktop" class="plat-tab-pane hidden space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              <ul class="list-disc list-inside space-y-2">
+                <li><strong>Windows:</strong> حمّل حزمة <strong>Stremio 5 x64</strong> (أو نسخة ARM لأجهزة Windows ARM) من <a href="https://www.stremio.com/downloads" target="_blank" rel="noopener noreferrer" class="text-purple-500 underline">صفحة التحميل الرسمية</a>.</li>
+                <li><strong>macOS:</strong> حمّل النسخة المناسبة لمعالج جهازك (Apple Silicon أو Intel).</li>
+                <li><strong>Linux:</strong> تتوفر حزم جاهزة لتوزيعات Debian/Ubuntu و Arch Linux بالإضافة إلى حزمة <strong>Flatpak</strong>.</li>
+                <li><strong>إعداد مهم داخل التطبيق:</strong> ادخل للإعدادات وفعّل خيار <strong>Hardware-accelerated decoding</strong> لتجنب أي انهيار أثناء تشغيل ملفات 4K الثقيلة، واضبط <strong>Torrent Profile</strong> على <code>Ultra Fast</code> وحجم الكاش على <code>10GB</code>.</li>
+              </ul>
+            </div>
+
+            <!-- VR & Other Tab -->
+            <div id="plat-vr" class="plat-tab-pane hidden space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              <ul class="list-disc list-inside space-y-2">
+                <li><strong>Apple Vision Pro:</strong> استخدم <strong>Stremio Web</strong> مع ضبط المشغل الخارجي على تطبيق <strong>Moon VR Player</strong>.</li>
+                <li><strong>Meta Quest &amp; Pico:</strong> متوفر على متجر Pico رسمياً، ويمكن تثبيته جانبياً (Sideload) على Meta Quest.</li>
+                <li><strong>Steam Deck &amp; Raspberry Pi 4/5:</strong> على Steam Deck ثبّت نسخة Linux Flatpak، وعلى Raspberry Pi 4/5 استخدم نظام <strong>Stremio OS</strong> المخصص.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Stremio Server Section -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-purple-600 dark:text-purple-400">ثانياً: تشغيل خادم البث (Stremio Server) عبر Docker أو الشبكة المحلية</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              إذا كنت تستخدم <strong>Stremio Web</strong> (مثلاً على iOS أو المتصفح) وتريد تشغيل التورنت مباشرة داخل المتصفح مع تتبع تقدم الحلقات ودعم ترجمات الإضافات، يمكنك تشغيل <strong>Stremio Server</strong> على جهاز الكمبيوتر، أو هاتف أندرويد (مع تفعيل <code>Run as foreground service</code>)، أو كحاوية Docker بالأمر التالي:
+            </p>
+            ${renderCodeBlock(`# تشغيل Stremio Server مباشرة عبر Docker:
+docker run -d \\
+  --name stremio-server \\
+  -p 11470:11470 \\
+  -p 12470:12470 \\
+  stremio/server:latest
+
+# أو عبر ملف compose.yaml:
+services:
+  stremio-server:
+    image: stremio/server:latest
+    container_name: stremio-server
+    ports:
+      - "11470:11470"
+      - "12470:12470"
+    restart: unless-stopped`, 'yaml')}
+          </div>
+
+          <!-- Debrid Services Detailed Section -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-purple-600 dark:text-purple-400">ثالثاً: مقارنة واختيار خدمة الديبريد (Debrid Services)</h2>
+            
+            <div class="admonition bg-amber-50 dark:bg-amber-950/40 border-amber-500 p-4 rounded-xl text-xs space-y-1.5">
+              <div class="font-bold text-amber-800 dark:text-amber-300">⚠️ ماذا حدث مع Real-Debrid و AllDebrid و Debrid-Link؟</div>
+              <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                قامت خدمات <strong>Real-Debrid</strong> و <strong>AllDebrid</strong> و <strong>Debrid-Link</strong> بإلغاء نقطة اتصال الـ API التي تسمح للإضافات بمعرفة ما إذا كان ملف التورنت مخزناً مسبقاً (Cached) بشكل مباشر. قامت إضافات مثل <strong>Torrentio</strong> و <strong>MediaFusion</strong> و <strong>StremThru</strong> ببناء قواعد بيانات كاش مجتمعية (Crowdsourced Cache) كحل بديل، وبسبب ضخامة قاعدة مستخدمي Real-Debrid فإن الروابط تعمل فوراً في أغلب الأوقات، بينما خدمات مثل <strong>TorBox</strong> و <strong>Premiumize</strong> ما زالت توفر مؤشر كاش رسمي ودقيق 100%.
+              </p>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-right text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+                    <th class="p-3 font-bold">الخدمة</th>
+                    <th class="p-3 font-bold">حجم الكاش</th>
+                    <th class="p-3 font-bold">دقة مؤشر الكاش</th>
+                    <th class="p-3 font-bold">تعدد عناوين IP</th>
+                    <th class="p-3 font-bold">ميزات إضافية وتوصية Viren070</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                  <tr>
+                    <td class="p-3 font-bold text-indigo-600 dark:text-indigo-400">TorBox</td>
+                    <td class="p-3">متوسط وينمو بسرعة</td>
+                    <td class="p-3 text-emerald-600 font-bold">✅ دقيق رسمياً</td>
+                    <td class="p-3 text-emerald-600 font-bold">✅ بدون قيود IP مطلقاً</td>
+                    <td class="p-3">خوادم 80Gbit NVMe، سيدبوكس حتى 30 يوماً، ودعم Usenet في باقة Pro. ممتاز للسعر ومشاركة الحساب.</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold text-purple-600 dark:text-purple-400">Real-Debrid</td>
+                    <td class="p-3 text-emerald-600 font-bold">الأضخم عالمياً</td>
+                    <td class="p-3 text-amber-600">⚠️ تقديري عبر الإضافات</td>
+                    <td class="p-3 text-rose-500">❌ عنوان IP واحد في نفس الوقت</td>
+                    <td class="p-3">الأكثر شعبية والأكبر من حيث توفر المحتوى النادر والقديم، وسعره اقتصادي جداً (~16€ لـ 180 يوماً).</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold text-emerald-600 dark:text-emerald-400">Premiumize</td>
+                    <td class="p-3">ضخم جداً (الثاني عالمياً)</td>
+                    <td class="p-3 text-emerald-600 font-bold">✅ دقيق رسمياً</td>
+                    <td class="p-3 text-emerald-600 font-bold">✅ يسمح بعدة عناوين IP</td>
+                    <td class="p-3">الأكثر استقراراً وموثوقية؛ يعمل بنظام نقاط الاستخدام العادل (Fair Use Points).</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">AllDebrid / Debrid-Link</td>
+                    <td class="p-3">متوسط / صغير</td>
+                    <td class="p-3 text-rose-500">⚠️ غير دقيق</td>
+                    <td class="p-3 text-rose-500">❌ عنوان IP واحد</td>
+                    <td class="p-3">لا يوصي Viren070 بـ AllDebrid حالياً بسبب قيود الموافقة عبر البريد لكل IP خارجي وضعف دقة الكاش.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+              <div class="font-bold text-slate-900 dark:text-white">🔑 من أين تحصل على مفتاح الـ API Key الخاص بخدمة الديبريد؟</div>
+              <ul class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-300">
+                <li><strong>Real-Debrid:</strong> من صفحة <a href="https://real-debrid.com/apitoken" target="_blank" rel="noopener noreferrer" class="text-purple-500 underline">real-debrid.com/apitoken</a>.</li>
+                <li><strong>TorBox:</strong> من صفحة <a href="https://torbox.app/settings" target="_blank" rel="noopener noreferrer" class="text-purple-500 underline">torbox.app/settings</a> (قسم API Key).</li>
+                <li><strong>Premiumize:</strong> من صفحة <a href="https://www.premiumize.me/account" target="_blank" rel="noopener noreferrer" class="text-purple-500 underline">premiumize.me/account</a> (اضغط Show API Key).</li>
+                <li><strong>AllDebrid:</strong> من صفحة <a href="https://alldebrid.com/apikeys/" target="_blank" rel="noopener noreferrer" class="text-purple-500 underline">alldebrid.com/apikeys</a>.</li>
+              </ul>
+            </div>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // STREMIO 3: ADDONS (TORRENTIO, AIOSTREAMS, GDRIVE)
+      // ==========================================
+      {
+        id: 'st-addons',
+        category: 'stremio',
+        categoryLabel: 'البث و Stremio',
+        title: 'ضبط الإضافات الأساسية: Torrentio و AIOStreams و Google Drive',
+        subtitle: 'الإعدادات المثالية خطوة بخطوة لإضافة Torrentio، وتجميع الإضافات عبر AIOStreams، وإعداد Stremio GDrive.',
+        originalUrl: 'https://guides.viren070.me/stremio/addons/aiostreams/setup',
+        updatedAt: '31 أغسطس 2026',
+        checklistItem: 'تثبيت وضبط Torrentio أو AIOStreams بالترتيب والفلاتر الموصى بها',
+        render: () => `
+          <!-- Torrentio Guide -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h2 class="text-lg font-extrabold text-purple-600 dark:text-purple-400">1. إعداد إضافة Torrentio (الإعدادات الموصى بها)</h2>
+              <a href="https://torrentio.strem.fun/configure" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-purple-600 text-white text-xs font-bold hover:bg-purple-500">⚙️ صفحة إعداد Torrentio</a>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              تُعد <strong>Torrentio</strong> أشهر إضافة لجلب روابط التورنت والديبريد في Stremio. افتح صفحة الإعدادات واضبط الخيارات كما يوصي Viren070:
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-right text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+                    <th class="p-3 font-bold">الخيار في Torrentio</th>
+                    <th class="p-3 font-bold">القيمة الموصى بها</th>
+                    <th class="p-3 font-bold">السبب</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                  <tr>
+                    <td class="p-3 font-bold">Providers (المزودون)</td>
+                    <td class="p-3">اترك جميع المزودين مفعلين (افتراضي)</td>
+                    <td class="p-3">للحصول على أكبر عدد ممكن من النتائج (تأكد من تفعيل NyaaSi و AniDex للأنمي).</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">Sorting (الترتيب)</td>
+                    <td class="p-3 font-semibold text-emerald-600 dark:text-emerald-400"><code>By quality then size</code> (مع ديبريد)<br><span class="text-slate-500 font-normal">أو <code>By quality then seeders</code> (بدون ديبريد)</span></td>
+                    <td class="p-3">مع الديبريد لا يهمك عدد السيدرز بل حجم وجودة الملف؛ وبدون ديبريد تحتاج لأعلى سيدرز.</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">Exclude qualities</td>
+                    <td class="p-3">استبعد <code>Screener</code> و <code>CAM</code></td>
+                    <td class="p-3">لإخفاء النسخ المصورة بكاميرا داخل السينما ذات الجودة السيئة.</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">Debrid Provider &amp; API Key</td>
+                    <td class="p-3">اختر مزود الديبريد الخاص بك والصق مفتاح الـ API</td>
+                    <td class="p-3">يمكنك اختيار أكثر من مزود ديبريد في نفس الإعداد إذا كان لديك اشتراكان.</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold">Debrid Options</td>
+                    <td class="p-3">❌ اترك <code>Don't show download to debrid</code> <strong>غير محدد</strong><br>✅ حدد <code>Don't show debrid catalog</code></td>
+                    <td class="p-3">ترك الأول غير محدد مهم جداً مع Real-Debrid لأن بعض الروابط المخزنة تظهر كـ <code>[Download]</code>، وتحديد الثاني يمنع ازدحام الشاشة الرئيسية.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- AIOStreams Guide -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">2. إعداد إضافة AIOStreams (توحيد جميع الإضافات والديبريد)</h2>
+              <a href="https://docs.aiostreams.viren070.me/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-500">📘 توثيق AIOStreams الرسمي</a>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              إضافة <strong>AIOStreams</strong> (التي طورها Viren070 نفسه) تتيح لك دمج عدة إضافات (مثل <strong>Torrentio</strong>، <strong>Comet</strong>، <strong>MediaFusion</strong>، <strong>StremThru Torz</strong>، و <strong>StremThru Store</strong>) وعدة خدمات ديبريد في واجهة واحدة مع إزالة التكرارات (Deduplication) وتنسيق النتائج وترتيبها بدقة.
+            </p>
+
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <h4 class="font-bold text-slate-900 dark:text-white">أ) كيف تضيف Torrentio داخل AIOStreams العام (Wrapping Method)؟</h4>
+                <p class="text-slate-600 dark:text-slate-300">بما أن نسخة ElfHosted العامة تعطل Torrentio، يمكنك إما <strong>استضافة AIOStreams ذاتياً</strong> على خادم Oracle VPS الخاص بك، أو استخدام طريقة <strong>التغليف (Wrapping)</strong> عبر إحدى النسخ العامة الموثوقة التي تسمح بـ Torrentio مثل:</p>
+                <ul class="list-disc list-inside text-indigo-600 dark:text-indigo-400 font-mono text-xs space-y-1">
+                  <li>https://aiostreamsfortheweak.nhyira.dev (مستقر - Stable)</li>
+                  <li>https://aiostreams.12312023.xyz/ (مستقر - Stable)</li>
+                  <li>https://aiostreams.stremiofr.com (مستقر - Stable)</li>
+                  <li>https://aiostreams.viren070.me (تحديثات ليلية - Nightly من تطوير Viren070)</li>
+                </ul>
+                <p class="text-slate-600 dark:text-slate-300">تفتح إحدى هذه النسخ، تضيف فيها خدمة الديبريد و Torrentio فقط، تنشئ كلمة مرور وتنسخ رابط <code>Manifest URL</code>، ثم تعود لنسختك الرئيسية وتضيف إضافة <strong>AIOStreams (Wrap AIOStreams within AIOStreams)</strong> وتلصق الرابط بداخلها!</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <h4 class="font-bold text-slate-900 dark:text-white">ب) الإعدادات الذهبية داخل AIOStreams (Timeout + Deduplicator + Sorting):</h4>
+                <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-1.5">
+                  <li><strong>مهلة الانتظار (Timeout):</strong> عند تثبيت الإضافات من Marketplace (مثل Comet و MediaFusion و StremThru Torz)، غيّر الـ Timeout من 10 ثوانٍ إلى <strong><code>5 seconds</code></strong> لتسريع ظهور النتائج.</li>
+                  <li><strong>مانع التكرار (Deduplicator):</strong> في قائمة Filters فعّل <strong>Deduplicator</strong> واضبط خيارات Group Handling على <strong><code>Single Result</code></strong>.</li>
+                  <li><strong>ترتيب النتائج (Global Sort Order) مع الديبريد:</strong></li>
+                </ul>
+                ${renderCodeBlock('Cached → Library → Resolution → Quality → Regex Patterns → Visual Tag → Language → Size → Seeder', 'text')}
+                <div class="text-xs text-slate-500">أما إذا كنت تستخدم التورنت المجاني بدون ديبريد (P2P Only) فاجعل الترتيب: <code>Resolution → Quality → Regex Patterns → Seeders → Visual Tag → Language → Size</code>.</div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <h4 class="font-bold text-slate-900 dark:text-white">ج) أنماط Regex (Vidhin's Regex Patterns) لتفضيل فرق الرفع الموثوقة:</h4>
+                <p class="text-slate-600 dark:text-slate-300">استورد أحد الرابطين التاليين في قسم <strong>Preferred Regex Patterns</strong> لترتيب فرق الرفع حسب الجودة (Remux T1, Web T1):</p>
+                ${renderCodeBlock(`# للأفلام والمسلسلات:
+https://raw.githubusercontent.com/Vidhin05/Releases-Regex/main/merged-regexes.json
+
+# للأفلام والمسلسلات والأنمي معاً:
+https://raw.githubusercontent.com/Vidhin05/Releases-Regex/main/merged-anime-regexes.json`, 'text')}
+              </div>
+            </div>
+          </div>
+
+          <!-- Stremio GDrive Guide -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+            <h2 class="text-lg font-extrabold text-purple-600 dark:text-purple-400">3. إضافة Stremio GDrive (البث من Google Drive عبر Cloudflare Worker)</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              تتيح لك إضافة <strong>Stremio-GDrive</strong> بث ملفات الفيديو المخزنة على حسابك في Google Drive أو الأقراص المشتركة (Team Drives) مجاناً عبر Cloudflare Worker:
+            </p>
+            <ol class="list-decimal list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
+              <li>أنشئ مشروعاً جديداً في <strong>Google Cloud Console</strong> باسم <code>Stremio-Gdrive</code> وفعّل <strong>Google Drive API</strong>.</li>
+              <li>من <strong>Google Auth Platform</strong>، اضبط التطبيق كـ <code>External</code> وأنشئ OAuth Client من نوع <code>Web application</code> مع وضع رابط إعادة التوجيه: <code>https://guides.viren070.me/oauth/google/callback</code> ثم اضغط <strong>Publish</strong> في قسم Audience.</li>
+              <li>انسخ <code>Client ID</code> و <code>Client Secret</code> واستخدم أداة OAuth الخاصة بـ Viren070 لتوليد كود الـ Worker.</li>
+              <li>أنشئ Worker جديداً في <strong>Cloudflare Workers</strong>، الصق الكود بداخله واضغط <strong>Deploy</strong>، ثم انسخ رابط <code>/manifest.json</code> وأضفه إلى Stremio.</li>
+            </ol>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // STREMIO 4: EXTRAS (BOOTSTRAPPER, ADDON MANAGER, TRAKT, ETC.)
+      // ==========================================
+      {
+        id: 'st-extras',
+        category: 'stremio',
+        categoryLabel: 'البث و Stremio',
+        title: 'الأدوات والإضافات الإضافية (Extras)',
+        subtitle: 'أدوات قوية لتسريع إعداد حسابك، إعادة ترتيب الإضافات، تفعيل Trakt، وإظهار التقييمات على الملصقات.',
+        originalUrl: 'https://guides.viren070.me/stremio/extras',
+        updatedAt: '14 مارس 2026',
+        checklistItem: 'استكشاف أدوات Account Bootstrapper و Addon Manager و RPDB',
+        render: () => `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-extrabold text-indigo-600 dark:text-indigo-400">⚡ Stremio Account Bootstrapper</h3>
+                <a href="https://bootstrapper.stremx.net/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-indigo-500 hover:underline">فتح الأداة ↗</a>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                يتيح لك تهيئة حساب Stremio بالكامل ببضع نقرات فقط عبر تثبيت قالب إضافات جاهز. مثالي للمبتدئين أو عند إعداد حسابات جديدة للعائلة والأصدقاء. (تنبيه: يقوم باستبدال قائمة إضافاتك الحالية).
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-extrabold text-indigo-600 dark:text-indigo-400">🔀 Stremio Addon Manager</h3>
+                <a href="https://addon-manager.viren070.me/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-indigo-500 hover:underline">فتح الأداة ↗</a>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                نسخة مطورة يستضيفها Viren070 تتيح لك <strong>إعادة ترتيب الإضافات</strong> (وبالتالي ترتيب ظهور قوائمها في الصفحة الرئيسية)، بالإضافة إلى <strong>تغيير أسماء الإضافات أو حذف قوائم (Catalogs) محددة</strong> دون الحاجة لحذف الإضافة وإعادة تثبيتها.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-extrabold text-purple-600 dark:text-purple-400">📊 Trakt Scrobbling &amp; التوصيات</h3>
+                <a href="https://guides.viren070.me/stremio/extras/trakt" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-purple-500 hover:underline">التفاصيل ↗</a>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                ربط حساب Trakt لتتبع سجل مشاهداتك تلقائياً واستخدام إضافات مثل <strong>StremThru Lists</strong> و <strong>AIOpicks</strong> للحصول على توصيات مخصصة، مع إمكانية استيراد سجل مشاهداتك من Netflix عبر أداة <code>Netflix-To-Trakt-Import</code>.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-extrabold text-purple-600 dark:text-purple-400">🧲 Debrid Media Manager (DMM)</h3>
+                <a href="https://debridmediamanager.com/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-purple-500 hover:underline">فتح الموقع ↗</a>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                أداة ممتازة للبحث عن الأفلام والمسلسلات النادرة وإضافتها مباشرة إلى سحابة Real-Debrid أو TorBox الخاصة بك عندما لا تجدها Torrentio، ثم مشاهدتها داخل Stremio عبر إضافة <strong>Debrid Search</strong> أو <strong>DMM Cast</strong>.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+              <h3 class="text-base font-extrabold text-emerald-600 dark:text-emerald-400">⭐ التقييمات على الملصقات (RPDB &amp; aioratings)</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                لعرض تقييمات IMDb و Rotten Tomatoes مباشرة على بوسترات الأفلام في قوائم TMDB و Streaming Catalogs و MDBList، استخدم مفتاح RPDB المجاني الجاهز:
+              </p>
+              ${renderCodeBlock('t0-free-rpdb', 'text')}
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+              <h3 class="text-base font-extrabold text-emerald-600 dark:text-emerald-400">🧩 إضافات سطح المكتب والمتصفح</h3>
+              <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                <li><strong>Open in Stremio:</strong> إضافة متصفح تضع زر فتح مباشر في Stremio داخل مواقع IMDb و Letterboxd و Trakt.</li>
+                <li><strong>Stremio Enhanced / Community:</strong> نسخ معدلة للكمبيوتر تدعم الثيمات والإضافات البرمجية.</li>
+                <li><strong>Stremio Downloader:</strong> لتحميل أي بث مباشرة إلى جهازك للمشاهدة بدون إنترنت.</li>
+              </ul>
+            </div>
+
+          </div>
+        `
+      },
+
+      // ==========================================
+      // STREMIO 5: FAQ & TROUBLESHOOTING
+      // ==========================================
+      {
+        id: 'st-troubleshooting',
+        category: 'stremio',
+        categoryLabel: 'البث و Stremio',
+        title: 'الأسئلة الشائعة (FAQ) وحلول المشاكل (Troubleshooting)',
+        subtitle: 'مرجع شامل لحل مشاكل التقطيع، الشاشة الحمراء، اختفاء الروابط، وتثبيت الإضافات يدوياً.',
+        originalUrl: 'https://guides.viren070.me/stremio/troubleshooting',
+        updatedAt: '31 أغسطس 2026',
+        checklistItem: 'مراجعة حلول المشاكل الشائعة وقواعد استخدام الـ IP الواحد',
+        render: () => `
+          <!-- Troubleshooting Cards -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-rose-600 dark:text-rose-400">🛠️ حلول أشهر المشاكل في Stremio (Troubleshooting)</h2>
+            
+            <div class="space-y-3">
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1.5">
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white">1. تظهر رسالة "No streams were found" (لم يتم العثور على روابط):</h4>
+                <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                  <li><strong>حجب من مزود الإنترنت (ISP):</strong> بعض شركات الاتصالات تحجب نطاق Torrentio؛ جرب تغيير الـ DNS في جهازك (إلى Cloudflare <code>1.1.1.1</code> أو Google <code>8.8.8.8</code>) أو استخدام AIOStreams.</li>
+                  <li><strong>الفيلم لا يزال في السينما:</strong> إذا لم يصدر للفيلم نسخة رقمية (Digital Release) فلن تجد روابط عالية الجودة (خاصة إذا استبعدت CAM/Screener).</li>
+                  <li><strong>العمل نادر جداً:</strong> ابحث عنه في <strong>Debrid Media Manager</strong> وأضفه لسحابتك.</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1.5">
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white">2. ظهور شاشة حمراء (Red Screen) عند تشغيل رابط Debrid:</h4>
+                <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                  <li><strong>انتهاء الاشتراك أو تجديده:</strong> عند انتهاء اشتراك Real-Debrid ثم تجديده، يتم توليد مفتاح API جديد تلقائياً! يجب عليك نسخ المفتاح الجديد وإعادة ضبط إضافاتك (Torrentio / AIOStreams).</li>
+                  <li><strong>تعطل مؤقت في خادم الديبريد:</strong> تحقق من حالة الخدمة أو حساباتهم الرسمية.</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1.5">
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white">3. الصورة مقسومة نصفين أو شاشة سوداء مع صوت فقط (خاصة في Fire Stick):</h4>
+                <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                  <li>سبب انقسام الشاشة هو أن جهاز <strong>Fire Stick 4K Max (الجيل الثاني)</strong> لا يدعم ترميز <strong>Dolby Vision Profile 7</strong>، كما أن بعض أجهزة Fire Stick تواجه مشكلة مع الملفات التي تجمع بين DV و HDR10+ معاً. الحل هو اختيار ملف آخر (مثلا HDR10 فقط أو 4K Web-DL) أو استخدام مشغل <strong>Vimu Player</strong>.</li>
+                  <li>إذا كانت الترجمات بصيغة SSA لا تظهر بشكل صحيح في المشغل الافتراضي (ExoPlayer)، استخدم مشغل خارجي مثل <strong>Vimu Player</strong> أو <strong>Just Player</strong>.</li>
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1.5">
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white">4. عند الضغط على زر Install لا يحدث شيء (التثبيت اليدوي للإضافات):</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300">انسخ رابط الـ Manifest الخاص بالإضافة (واستبدل البادئة <code>stremio://</code> بـ <code>https://</code>)، ثم افتح <strong>Stremio Web</strong> &rarr; قسم <strong>Addons</strong> &rarr; اضغط <strong>+ Add Addon</strong> والصق الرابط واضغط Add.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key FAQs -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">❓ أهم الأسئلة الشائعة (FAQ)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1">
+                <div class="font-bold text-slate-900 dark:text-white">كيف تعمل قاعدة عنوان الـ IP الواحد في خدمات الديبريد؟</div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">يمكنك تشغيل الخدمة على عدد غير محدود من الأجهزة داخل منزلك (لأنها تشترك في نفس الـ Public IP للراوتر)، ولكن لا يمكنك المشاهدة من خارج المنزل عبر بيانات الجوال في نفس اللحظة التي يشاهد فيها شخص آخر في المنزل (إلا مع <strong>TorBox</strong> و <strong>Premiumize</strong> أو عبر بروكسي موحد على VPS).</p>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1">
+                <div class="font-bold text-slate-900 dark:text-white">ما هو أفضل جهاز تلفزيون (Streaming Box) لتشغيل Stremio؟</div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">أفضل قيمة مقابل السعر في أمريكا هو <strong>ONN 4K Box Pro</strong>، وخارج أمريكا <strong>Chromecast 4K with Google TV</strong> أو <strong>Fire Stick 4K</strong>. أما أقوى أداء مطلق فهو جهاز <strong>NVIDIA Shield TV Pro</strong>.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1">
+                <div class="font-bold text-slate-900 dark:text-white">ما الفرق بين Torrentio و Torrentio-sh؟</div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">إضافة <code>torrentio-sh</code> قديمة جداً (كانت النسخة الأولية من KnightCrawler وتدعم 4 مصادر فقط). لا تقم بتثبيتها أبداً، بل ثبّت <strong>Torrentio</strong> الأصلي من صفحة إعداداته.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1">
+                <div class="font-bold text-slate-900 dark:text-white">ما الإضافات المطلوبة لمشاهدة الأنمي بأفضل دقة؟</div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">تحتاج فقط إلى إضافتين: <strong>Anime Kitsu</strong> (للبيانات الوصفية والترقيم الصحيح لحلقات الأنمي) و <strong>Torrentio</strong> (مع التأكد من تفعيل مزودي <code>NyaaSi</code> و <code>AniDex</code>).</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // ANIYOMI GUIDE
+      // ==========================================
+      {
+        id: 'aniyomi-guide',
+        category: 'aniyomi',
+        categoryLabel: 'Aniyomi',
+        title: 'دليل تطبيق Aniyomi للأندرويد (الأنمي والمانجا)',
+        subtitle: 'كل ما تحتاجه لإعداد تطبيق Aniyomi لمشاهدة الأنمي وقراءة المانجا على أجهزة أندرويد.',
+        originalUrl: 'https://guides.viren070.me/aniyomi',
+        updatedAt: '2 مارس 2025',
+        checklistItem: 'التعرف على تطبيق Aniyomi وطريقة إعداده للأندرويد',
+        render: () => `
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-pink-600 dark:text-pink-400">ما هو تطبيق Aniyomi؟</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              تطبيق <strong>Aniyomi</strong> هو تطبيق مجاني ومفتوح المصدر لنظام Android مخصص لمشاهدة الأنمي وقراءة المانجا في مكان واحد. وهو مبني كتفرع (Fork) من تطبيق المانجا الشهير <strong>Tachiyomi / Mihon</strong> مع إضافة مشغل فيديو مدمج ودعم كامل لمصادر الأنمي والتورنت وخدمات الديبريد (مثل TorBox).
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-1.5">
+                <div class="font-bold text-pink-600 dark:text-pink-400">1. المقدمة (Intro)</div>
+                <p class="text-slate-600 dark:text-slate-300">واجهة نظيفة خالية من الإعلانات، تتبع تلقائي للحلقات والفصول عبر MyAnimeList و AniList و Kitsu، مع إمكانية التحميل للمشاهدة بدون إنترنت.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-1.5">
+                <div class="font-bold text-pink-600 dark:text-pink-400">2. الإعداد والمستودعات (Setup)</div>
+                <p class="text-slate-600 dark:text-slate-300">يتم تثبيت التطبيق ثم إضافة مستودعات الإضافات (Extension Repos) الخاصة بالأنمي والمانجا، ويمكن ربطه بإضافة Torrentio أو حساب TorBox للبث المباشر فائق السرعة.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-1.5">
+                <div class="font-bold text-pink-600 dark:text-pink-400">3. النسخ المعدلة (Forks)</div>
+                <p class="text-slate-600 dark:text-slate-300">يستعرض الدليل أشهر النسخ المتفرعة من Aniyomi التي تضيف ميزات إضافية في الواجهة والمزامنة.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // GAMING: PLUTONIUM GUIDE
+      // ==========================================
+      {
+        id: 'gaming-plutonium',
+        category: 'gaming',
+        categoryLabel: 'الألعاب (Plutonium)',
+        title: 'دليل تشغيل ألعاب Call of Duty مجاناً عبر Plutonium',
+        subtitle: 'خطوات تثبيت وتشغيل Black Ops I (T5)، Black Ops II (T6)، و World at War (T4) على Windows مع خوادم مخصصة ودعم المودات.',
+        originalUrl: 'https://guides.viren070.me/plutonium',
+        updatedAt: '2 مارس 2025',
+        checklistItem: 'تحميل مشغل Plutonium وربط مجلد اللعبة الأساسي',
+        render: () => `
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-amber-600 dark:text-amber-400">ما هو مشروع Plutonium؟</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              يوفر مشروع <strong>Plutonium</strong> تجربة لعب جماعي وزومبي مجانية ومحسّنة لألعاب <strong>Call of Duty: Black Ops 1 (T5)</strong>، <strong>Black Ops 2 (T6)</strong>، <strong>World at War (T4)</strong>، و <strong>Modern Warfare 3 (IW5)</strong> على نظام Windows، مع خوادم مخصصة (Dedicated Servers)، حماية ضد الغش، ودعم كامل للمودات.
+            </p>
+
+            <div class="space-y-4 pt-2">
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">الخطوة 1: تحميل مشغل Plutonium Launcher</h3>
+                <ol class="list-decimal list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1">
+                  <li>قم بتحميل ملف <code>plutonium.exe</code> واحفظه في مكان مناسب مثل سطح المكتب أو مجلد الألعاب.</li>
+                  <li>شغّل الملف، وإذا ظهرت نافذة Windows Defender SmartScreen اضغط <strong>More info</strong> ثم <strong>Run anyway</strong>.</li>
+                  <li>سيقوم المشغل بتحميل ملفات العميل تلقائياً، ثم يطلب منك تسجيل الدخول بحسابك في منتدى Plutonium (أنشئ حساباً مجانياً في منتداهم إذا لم يكن لديك حساب).</li>
+                </ol>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">الخطوة 2: تحميل ملفات اللعبة الأساسية (Base Game)</h3>
+                <ol class="list-decimal list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1">
+                  <li>ثبّت برنامج تورنت موثوق مثل <strong>qBittorrent</strong> (مع مراعاة قوانين بلدك أو استخدام VPN/Debrid عند الحاجة).</li>
+                  <li>حمّل ملف التورنت الخاص بالجزء الذي تريد لعبه: <strong>T6 - Black Ops 2</strong> أو <strong>T5 - Black Ops 1</strong> أو <strong>T4 - World at War</strong>.</li>
+                  <li>احفظ اللعبة في مسار واضح مثل <code>C:/Games/Plutonium</code> وانتظر حتى يكتمل التحميل إلى <code>100% (Seeding)</code>.</li>
+                </ol>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">الخطوة 3: ربط مجلد اللعبة داخل Plutonium Launcher</h3>
+                <ol class="list-decimal list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1">
+                  <li>افتح مشغل Plutonium واختر اللعبة (مثلاً <strong>Black Ops II - T6 Multiplayer</strong> أو <strong>T6 Zombies</strong>) واضغط زر <strong>SETUP</strong>.</li>
+                  <li>حدد مجلد اللعبة الذي قمت بتحميله (مثلاً <code>pluto_t6_full_game</code>).</li>
+                  <li>ملاحظة: لا تحتاج لإعداد Multiplayer و Zombies كل على حدة؛ فإعداد أحدهما يقوم بإعداد الآخر تلقائياً! اضغط <strong>PLAY</strong> للاستمتاع باللعب.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        `
+      },
+
+      // ==========================================
+      // INTERACTIVE TOOLS (ENV BUILDER, DEBRID CALCULATOR, CHECKLIST)
+      // ==========================================
+      {
+        id: 'interactive-tools',
+        category: 'tools',
+        categoryLabel: 'أدوات تفاعلية',
+        title: '🛠️ الأدوات التفاعلية المساعدة (مولّد الإعدادات وحاسبة الديبريد)',
+        subtitle: 'ولّد أوامر SSH وملف .env الخاص بقالب Viren070 تلقائياً، وقارن تكلفة خدمات الديبريد بالريال السعودي والدولار.',
+        originalUrl: 'https://guides.viren070.me/selfhosting',
+        updatedAt: 'أداة تفاعلية مدمجة',
+        checklistItem: 'تجربة مولّد ملف .env وحاسبة خدمات الديبريد',
+        render: () => `
+          <!-- Tool 1: Interactive .env & SSH Command Generator -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <h2 class="text-lg font-extrabold text-indigo-600 dark:text-indigo-400">1. مولّد أوامر الاستضافة الذاتية وملف <code>.env</code> التفاعلي</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">أدخل بيانات خادم Oracle VPS والنطاق الخاص بك واختر الخدمات التي تود استضافتها ليتم توليد جميع الأوامر وملف <code>.env</code> جاهزة للنسخ الفوري:</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-xs font-bold mb-1">عنوان IP الخادم (Oracle VPS IP)</label>
+                <input id="genVpsIp" type="text" value="129.151.100.50" oninput="updateEnvGenerator()" class="w-full px-3 py-2 rounded-xl text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono" dir="ltr" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">النطاق الخاص بك (Domain)</label>
+                <input id="genDomain" type="text" value="mydomain.com" oninput="updateEnvGenerator()" class="w-full px-3 py-2 rounded-xl text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono" dir="ltr" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1">البريد الإلكتروني (لشهادات SSL)</label>
+                <input id="genEmail" type="email" value="admin@mydomain.com" oninput="updateEnvGenerator()" class="w-full px-3 py-2 rounded-xl text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono" dir="ltr" />
+              </div>
+            </div>
+
+            <div>
+              <div class="text-xs font-bold mb-2">اختر البروفايلات (COMPOSE_PROFILES) التي تريد تشغيلها مع Traefik و Authelia:</div>
+              <div class="flex flex-wrap gap-2">
+                <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" class="prof-chk accent-indigo-600" value="required" checked disabled />
+                  <span>required (Traefik + Authelia)</span>
+                </label>
+                <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" class="prof-chk accent-indigo-600" value="cloudflare-ddns" checked onchange="updateEnvGenerator()" />
+                  <span>cloudflare-ddns</span>
+                </label>
+                <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" class="prof-chk accent-indigo-600" value="aiostreams" checked onchange="updateEnvGenerator()" />
+                  <span>aiostreams</span>
+                </label>
+                <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" class="prof-chk accent-indigo-600" value="stremthru" checked onchange="updateEnvGenerator()" />
+                  <span>stremthru</span>
+                </label>
+                <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" class="prof-chk accent-indigo-600" value="comet" onchange="updateEnvGenerator()" />
+                  <span>comet</span>
+                </label>
+                <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" class="prof-chk accent-indigo-600" value="mediafusion" onchange="updateEnvGenerator()" />
+                  <span>mediafusion</span>
+                </label>
+                <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" class="prof-chk accent-indigo-600" value="nzbdav" onchange="updateEnvGenerator()" />
+                  <span>nzbdav</span>
+                </label>
+                <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" class="prof-chk accent-indigo-600" value="seanime" onchange="updateEnvGenerator()" />
+                  <span>seanime</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="relative rounded-2xl bg-slate-900 text-slate-100 p-4 border border-slate-800">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono text-indigo-400">Generated Setup Commands &amp; .env Configuration</span>
+                <button type="button" onclick="copyDynamicConfig()" class="px-3 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold">📋 نسخ الكود</button>
+              </div>
+              <pre id="generatedEnvOutput" class="text-xs font-mono overflow-x-auto leading-relaxed text-emerald-300"></pre>
+            </div>
+          </div>
+
+          <!-- Tool 2: Debrid Cost & Feature Comparator -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h2 class="text-lg font-extrabold text-purple-600 dark:text-purple-400">2. حاسبة ومقارن أسعار خدمات الديبريد (بالريال السعودي والدولار)</h2>
+              <div class="flex items-center gap-2">
+                <label class="text-xs font-bold">العملة:</label>
+                <select id="currencySelector" onchange="renderDebridTable()" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                  <option value="SAR">ريال سعودي (SAR)</option>
+                  <option value="USD">دولار أمريكي (USD)</option>
+                  <option value="EUR">يورو (EUR)</option>
+                </select>
+              </div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-right text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+                    <th class="p-3 font-bold">الخدمة والباقة</th>
+                    <th class="p-3 font-bold">سعر الباقة</th>
+                    <th class="p-3 font-bold">التكلفة الشهرية التقريبية</th>
+                    <th class="p-3 font-bold">التكلفة السنوية التقريبية</th>
+                    <th class="p-3 font-bold">تعدد الـ IP</th>
+                  </tr>
+                </thead>
+                <tbody id="debridComparisonBody" class="divide-y divide-slate-200 dark:divide-slate-800"></tbody>
+              </table>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    // ==========================================
+    // HELPER: CODE BLOCK RENDERER
+    // ==========================================
+    let codeBlockCounter = 0;
+    function renderCodeBlock(code, lang = 'bash') {
+      codeBlockCounter++;
+      const blockId = 'code-block-' + codeBlockCounter;
+      const escaped = code
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      return `
+        <div class="rounded-xl overflow-hidden bg-slate-900 border border-slate-800 my-2">
+          <div class="flex items-center justify-between px-3.5 py-1.5 bg-slate-950/70 border-b border-slate-800 text-[11px] text-slate-400">
+            <span class="font-mono uppercase">${lang}</span>
+            <button type="button" onclick="copyCodeById('${blockId}')" class="px-2.5 py-0.5 rounded bg-slate-800 hover:bg-indigo-600 text-slate-200 hover:text-white transition-colors font-sans text-xs font-semibold">
+              📋 نسخ الأمر
+            </button>
+          </div>
+          <pre id="${blockId}" class="p-3.5 text-xs font-mono text-slate-100 overflow-x-auto leading-relaxed">${escaped}</pre>
+        </div>
+      `;
+    }
+
+    // ==========================================
+    // STATE MANAGEMENT & SAFE STORAGE
+    // ==========================================
+    let currentPageId = 'sh-overview';
+    let completedSteps = {};
+
+    function loadState() {
+      try {
+        const savedSteps = localStorage.getItem('viren070_ar_steps');
+        if (savedSteps) completedSteps = JSON.parse(savedSteps);
+        const savedTheme = localStorage.getItem('viren070_ar_theme');
+        if (savedTheme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {
+        // Fallback in sandboxed iframe
+      }
+    }
+
+    function saveStepsState() {
+      try {
+        localStorage.setItem('viren070_ar_steps', JSON.stringify(completedSteps));
+      } catch (e) {}
+    }
+
+    function showToast(msg) {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = 'px-4 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold shadow-lg border border-indigo-400/30 transition-all duration-300';
+      toast.textContent = msg;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 2200);
+    }
+
+    window.copyCodeById = function(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const text = el.innerText || el.textContent;
+      copyTextToClipboard(text);
+    };
+
+    function copyTextToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('✅ تم نسخ النص إلى الحافظة بنجاح!');
+        }).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('✅ تم نسخ النص إلى الحافظة بنجاح!');
+      } catch (e) {
+        showToast('⚠️ تعذر النسخ التلقائي، يرجى النسخ يدوياً');
+      }
+      document.body.removeChild(ta);
+    }
+
+    // ==========================================
+    // SIDEBAR & PAGE NAVIGATION
+    // ==========================================
+    const CATEGORIES_ORDER = [
+      { key: 'home', label: '🏠 البداية' },
+      { key: 'selfhosting', label: '🖥️ الاستضافة الذاتية (Self Hosting)' },
+      { key: 'stremio', label: '🎬 البث و Stremio' },
+      { key: 'aniyomi', label: '🎌 تطبيق Aniyomi' },
+      { key: 'gaming', label: '🎮 الألعاب (Plutonium)' },
+      { key: 'tools', label: '🛠️ أدوات تفاعلية' }
+    ];
+
+    function renderSidebar() {
+      const treeEl = document.getElementById('sidebarNavTree');
+      if (!treeEl) return;
+
+      let html = '';
+      CATEGORIES_ORDER.forEach(cat => {
+        const catPages = PAGES.filter(p => p.category === cat.key);
+        if (!catPages.length) return;
+        html += `
+          <div>
+            <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-2 mb-1.5">${cat.label}</div>
+            <div class="space-y-1">
+              ${catPages.map(p => {
+                const active = p.id === currentPageId;
+                const done = !!completedSteps[p.id];
+                return `
+                  <button type="button" onclick="navigateTo('${p.id}')" class="w-full text-right px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-between gap-2 transition-all ${
+                    active
+                      ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
+                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80'
+                  }">
+                    <span class="truncate">${p.title}</span>
+                    ${done ? '<span class="text-emerald-400 shrink-0" title="مكتمل">✓</span>' : ''}
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      });
+
+      treeEl.innerHTML = html;
+
+      // Update Progress Bar
+      const total = PAGES.length;
+      const doneCount = PAGES.filter(p => completedSteps[p.id]).length;
+      const pct = Math.round((doneCount / total) * 100);
+      const pctEl = document.getElementById('sidebarProgressPct');
+      const barEl = document.getElementById('sidebarProgressBar');
+      if (pctEl) pctEl.textContent = pct + '% (' + doneCount + '/' + total + ')';
+      if (barEl) barEl.style.width = pct + '%';
+
+      // Update top navbar category pills
+      const currentObj = PAGES.find(p => p.id === currentPageId) || PAGES[0];
+      document.querySelectorAll('.cat-nav-btn').forEach(btn => {
+        const btnCat = btn.getAttribute('data-cat-btn');
+        if (btnCat === currentObj.category) {
+          btn.className = 'cat-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-indigo-600 text-white shadow-sm';
+        } else {
+          btn.className = 'cat-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-700/50';
+        }
+      });
+    }
+
+    window.toggleStepComplete = function(pageId) {
+      completedSteps[pageId] = !completedSteps[pageId];
+      saveStepsState();
+      renderSidebar();
+      renderCurrentPage();
+      showToast(completedSteps[pageId] ? '✅ تم تعليم هذا القسم كمكتمل!' : '↩️ تمت إزالة علامة الاكتمال');
+    };
+
+    window.navigateTo = function(pageId) {
+      const idx = PAGES.findIndex(p => p.id === pageId);
+      if (idx === -1) return;
+      currentPageId = pageId;
+      closeMobileMenu();
+      renderSidebar();
+      renderCurrentPage();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    function renderCurrentPage() {
+      const idx = PAGES.findIndex(p => p.id === currentPageId);
+      const page = PAGES[idx] || PAGES[0];
+      const isDone = !!completedSteps[page.id];
+
+      // Breadcrumb
+      const trailEl = document.getElementById('breadcrumbTrail');
+      if (trailEl) {
+        trailEl.innerHTML = `
+          <button type="button" onclick="navigateTo('home')" class="hover:text-indigo-500">الرئيسية</button>
+          <span>/</span>
+          <span class="text-slate-700 dark:text-slate-300">${page.categoryLabel}</span>
+          <span>/</span>
+          <span class="text-indigo-600 dark:text-indigo-400 font-bold">${page.title}</span>
+        `;
+      }
+
+      const origLink = document.getElementById('currentOriginalUrl');
+      if (origLink) origLink.href = page.originalUrl;
+
+      // Render Page Content
+      const container = document.getElementById('pageContent');
+      if (container) {
+        container.innerHTML = `
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+            <div>
+              <div class="inline-flex items-center gap-2 text-xs font-bold text-indigo-600 dark:text-indigo-400 mb-1">
+                <span>${page.categoryLabel}</span>
+                <span>•</span>
+                <span class="text-slate-400 font-normal">${page.updatedAt}</span>
+              </div>
+              <h1 class="text-xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">${page.title}</h1>
+              <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">${page.subtitle}</p>
+            </div>
+            <button type="button" onclick="toggleStepComplete('${page.id}')" class="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all border ${
+              isDone
+                ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border-emerald-500/40'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-indigo-500'
+            }">
+              <span>${isDone ? '✅ مكتمل (اضغط للإلغاء)' : '⬜ تعليم هذا الدرس كمكتمل'}</span>
+            </button>
+          </div>
+          ${page.render()}
+        `;
+      }
+
+      // Render Pagination Footer
+      const prevPage = idx > 0 ? PAGES[idx - 1] : null;
+      const nextPage = idx < PAGES.length - 1 ? PAGES[idx + 1] : null;
+      const footerEl = document.getElementById('paginationFooter');
+      if (footerEl) {
+        footerEl.innerHTML = `
+          <div>
+            ${prevPage ? `
+              <button type="button" onclick="navigateTo('${prevPage.id}')" class="w-full text-right p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all group">
+                <div class="text-[11px] text-slate-400 mb-1">→ الصفحة السابقة</div>
+                <div class="text-sm font-extrabold text-indigo-600 dark:text-indigo-400 group-hover:underline">${prevPage.title}</div>
+              </button>
+            ` : ''}
+          </div>
+          <div>
+            ${nextPage ? `
+              <button type="button" onclick="navigateTo('${nextPage.id}')" class="w-full text-left p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all group">
+                <div class="text-[11px] text-slate-400 mb-1">الصفحة التالية ←</div>
+                <div class="text-sm font-extrabold text-indigo-600 dark:text-indigo-400 group-hover:underline">${nextPage.title}</div>
+              </button>
+            ` : ''}
+          </div>
+        `;
+      }
+
+      // Initialize interactive widgets if on interactive-tools page
+      if (page.id === 'interactive-tools') {
+        updateEnvGenerator();
+        renderDebridTable();
+      }
+    }
+
+    // ==========================================
+    // PLATFORM TABS IN STREMIO SETUP
+    // ==========================================
+    window.switchPlatformTab = function(tabId) {
+      document.querySelectorAll('.plat-tab-pane').forEach(el => el.classList.add('hidden'));
+      const target = document.getElementById(tabId);
+      if (target) target.classList.remove('hidden');
+
+      document.querySelectorAll('.plat-tab-btn').forEach(btn => {
+        if (btn.id === 'btn-' + tabId) {
+          btn.className = 'plat-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-purple-600 text-white';
+        } else {
+          btn.className = 'plat-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300';
+        }
+      });
+    };
+
+    // ==========================================
+    // INTERACTIVE TOOLS LOGIC
+    // ==========================================
+    window.updateEnvGenerator = function() {
+      const ipEl = document.getElementById('genVpsIp');
+      const domEl = document.getElementById('genDomain');
+      const emailEl = document.getElementById('genEmail');
+      const outEl = document.getElementById('generatedEnvOutput');
+      if (!ipEl || !domEl || !emailEl || !outEl) return;
+
+      const ip = ipEl.value.trim() || 'YOUR_VPS_IP';
+      const domain = domEl.value.trim() || 'example.com';
+      const email = emailEl.value.trim() || 'you@example.com';
+
+      const selectedProfiles = [];
+      document.querySelectorAll('.prof-chk:checked').forEach(chk => {
+        selectedProfiles.push(chk.value);
+      });
+
+      const profilesStr = selectedProfiles.join(',');
+
+      outEl.textContent = `# 1. الاتصال بالخادم وتثبيت Docker واستنساخ القالب:
+ssh ubuntu@${ip}
+curl -fsSL https://get.docker.com -o install-docker.sh && sudo sh install-docker.sh
+cd /opt
+sudo git clone https://github.com/Viren070/docker-compose-vps-template.git docker
+sudo chown $(id -u):$(id -g) -R /opt/docker
+cd /opt/docker
+
+# 2. أهم المتغيرات التي تضعها داخل ملف /opt/docker/.env :
+COMPOSE_PROFILES=${profilesStr}
+DOMAIN=${domain}
+ACME_EMAIL=${email}
+TZ=Asia/Riyadh
+
+# 3. تشغيل الخدمات الأساسية أولاً ثم باقي الخدمات:
+docker compose --profile required up -d
+docker compose up -d`;
+    };
+
+    window.copyDynamicConfig = function() {
+      const outEl = document.getElementById('generatedEnvOutput');
+      if (!outEl) return;
+      copyTextToClipboard(outEl.textContent);
+    };
+
+    const DEBRID_PLANS = [
+      { name: 'TorBox (Essential - 30 يوم)', usdPrice: 3.00, days: 30, multiIp: '✅ نعم (بدون قيود)' },
+      { name: 'TorBox (Pro مع Usenet - سنوي)', usdPrice: 110.00, days: 365, multiIp: '✅ نعم (بدون قيود)' },
+      { name: 'Real-Debrid (180 يوم)', usdPrice: 17.30, days: 180, multiIp: '❌ IP واحد في نفس اللحظة' },
+      { name: 'Premiumize (شهر واحد)', usdPrice: 10.80, days: 30, multiIp: '✅ نعم (نظام النقاط)' },
+      { name: 'AllDebrid (30 يوم)', usdPrice: 3.25, days: 30, multiIp: '❌ IP واحد' }
+    ];
+
+    window.renderDebridTable = function() {
+      const sel = document.getElementById('currencySelector');
+      const tbody = document.getElementById('debridComparisonBody');
+      if (!sel || !tbody) return;
+
+      const cur = sel.value;
+      const rate = cur === 'SAR' ? 3.75 : (cur === 'EUR' ? 0.92 : 1.0);
+      const sym = cur === 'SAR' ? ' ر.س' : (cur === 'EUR' ? ' €' : ' $');
+
+      tbody.innerHTML = DEBRID_PLANS.map(p => {
+        const planCost = (p.usdPrice * rate).toFixed(2);
+        const monthlyCost = ((p.usdPrice / p.days) * 30 * rate).toFixed(2);
+        const yearlyCost = ((p.usdPrice / p.days) * 365 * rate).toFixed(2);
+        return `
+          <tr>
+            <td class="p-3 font-bold">${p.name}</td>
+            <td class="p-3 font-mono">${planCost}${sym}</td>
+            <td class="p-3 font-mono text-indigo-600 dark:text-indigo-400 font-bold">${monthlyCost}${sym}/شهر</td>
+            <td class="p-3 font-mono">${yearlyCost}${sym}/سنة</td>
+            <td class="p-3">${p.multiIp}</td>
+          </tr>
+        `;
+      }).join('');
+    };
+
+    // ==========================================
+    // GLOBAL SEARCH
+    // ==========================================
+    function setupSearch() {
+      const input = document.getElementById('globalSearchInput');
+      const box = document.getElementById('searchResultsBox');
+      const list = document.getElementById('searchResultsList');
+      const countText = document.getElementById('searchCountText');
+      const closeBtn = document.getElementById('closeSearchBtn');
+
+      if (!input || !box || !list) return;
+
+      input.addEventListener('input', () => {
+        const q = input.value.trim().toLowerCase();
+        if (!q) {
+          box.classList.add('hidden');
+          return;
+        }
+        const matches = PAGES.filter(p => {
+          const hay = (p.title + ' ' + p.subtitle + ' ' + p.categoryLabel + ' ' + p.render()).toLowerCase();
+          return hay.includes(q);
+        });
+
+        box.classList.remove('hidden');
+        countText.textContent = `نتائج البحث (${matches.length})`;
+
+        if (!matches.length) {
+          list.innerHTML = `<div class="text-xs text-slate-500 p-2">لم يتم العثور على نتائج مطابقة لـ "${input.value}"</div>`;
+          return;
+        }
+
+        list.innerHTML = matches.map(m => `
+          <button type="button" onclick="navigateTo('${m.id}'); document.getElementById('searchResultsBox').classList.add('hidden');" class="w-full text-right p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors block">
+            <div class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400">${m.title}</div>
+            <div class="text-[11px] text-slate-500 dark:text-slate-400 truncate">${m.subtitle}</div>
+          </button>
+        `).join('');
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          box.classList.add('hidden');
+          input.value = '';
+        });
+      }
+    }
+
+    // ==========================================
+    // MOBILE DRAWER & THEME TOGGLE
+    // ==========================================
+    function openMobileMenu() {
+      const sb = document.getElementById('sidebarContainer');
+      const bd = document.getElementById('mobileBackdrop');
+      if (sb) sb.classList.remove('translate-x-full');
+      if (bd) bd.classList.remove('hidden');
+    }
+
+    function closeMobileMenu() {
+      const sb = document.getElementById('sidebarContainer');
+      const bd = document.getElementById('mobileBackdrop');
+      if (sb) sb.classList.add('translate-x-full');
+      if (bd) bd.classList.add('hidden');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      renderSidebar();
+      renderCurrentPage();
+      setupSearch();
+
+      // Category buttons in top navbar
+      document.querySelectorAll('.cat-nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const cat = btn.getAttribute('data-cat-btn');
+          const firstPage = PAGES.find(p => p.category === cat);
+          if (firstPage) navigateTo(firstPage.id);
+        });
+      });
+
+      // Brand button -> Home
+      const brandBtn = document.getElementById('brandHomeBtn');
+      if (brandBtn) brandBtn.addEventListener('click', () => navigateTo('home'));
+
+      // Mobile menu
+      const mobBtn = document.getElementById('mobileMenuBtn');
+      const mobBd = document.getElementById('mobileBackdrop');
+      if (mobBtn) mobBtn.addEventListener('click', openMobileMenu);
+      if (mobBd) mobBd.addEventListener('click', closeMobileMenu);
+
+      // Theme toggle
+      const themeBtn = document.getElementById('themeToggleBtn');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.toggle('dark');
+          try {
+            localStorage.setItem('viren070_ar_theme', isDark ? 'dark' : 'light');
+          } catch (e) {}
+        });
+      }
+    });
+  </script>
+</body>
+</html>
